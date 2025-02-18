@@ -236,7 +236,7 @@
           typeText = '🐞 Bugfix -';
           break;
         case 'Improvement':
-          typeText = '🌟 Improvement -';
+          typeText = '✨ Improvement -';
           break;
         case 'Feature':
         default:
@@ -245,14 +245,14 @@
 
       // Build HTML preview
       let previewHTML = `
-<b>${typeText} ${title}</b><br><br>
-🌟 <i><b>Description</b> - What's new?</i><br>${whatsNew}<br><br>
-🎯 <i><b>Impact</b> - Why This Matters?</i><br>${whyMatters}<br><br>
+<b>${typeText} ${title}</b><br>
+🌟 <i><b>Description</b> - What's new?</i><br>${whatsNew}<br>
+🎯 <i><b>Impact</b> - Why This Matters?</i><br>${whyMatters}<br>
 `;
 
       // Add Kudos section if filled
       if (kudos) {
-        previewHTML += `🌟 <i><b>Kudos</b> - Thanks for your collaboration</i><br>${kudos}<br><br>`;
+        previewHTML += `🙇 <i><b>Kudos</b> - Thanks for your collaboration</i><br>${kudos}<br><br>`;
       }
 
       const linkItems = linksContainer.querySelectorAll('.link-item');
