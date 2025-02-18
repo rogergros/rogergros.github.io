@@ -245,14 +245,14 @@
 
       // Build HTML preview
       let previewHTML = `
-<b>${typeText} ${title}</b><br>
-🌟 <i><b>Description</b> - What's new?</i><br>${whatsNew}<br>
-🎯 <i><b>Impact</b> - Why This Matters?</i><br>${whyMatters}<br>
+<b>${typeText} ${title}</b><br><br>
+<blockquote>🌟 <i><b>Description</b> - What's new?</i></blockquote>${whatsNew}<br><br>
+<blockquote>🎯 <i><b>Impact</b> - Why This Matters?</i></blockquote>${whyMatters}<br><br>
 `;
 
       // Add Kudos section if filled
       if (kudos) {
-        previewHTML += `🙇 <i><b>Kudos</b> - Thanks for your collaboration</i><br>${kudos}<br><br>`;
+        previewHTML += `<blockquote>🙇 <i><b>Kudos</b> - Thanks for your collaboration</i><blockquote>${kudos}<br>`;
       }
 
       const linkItems = linksContainer.querySelectorAll('.link-item');
@@ -282,7 +282,6 @@
             'text/plain': new Blob([htmlPreview.innerText], { type: 'text/plain' })
           })
         ]);
-        alert('Rich text content copied to clipboard!');
       } catch (err) {
         console.error('Failed to copy rich text: ', err);
       }
@@ -302,23 +301,18 @@
 
     addlinkButton.addEventListener('click', addlinkField);
     form.addEventListener('input', updatePreview);
-    copyButton.addEventListener('click', () => {
-        navigator.clipboard.writeText(htmlPreview.innerText)
-            .then(() => {
-            // Provide visual feedback
-            copyButton.textContent = "Copied!";
-            copyButton.style.backgroundColor = "#28a745"; // Green background for success
-
-            // Revert to original after 2 seconds
-            setTimeout(() => {
-                copyButton.textContent = "Copy to Clipboard";
-                copyButton.style.backgroundColor = "#007a5a"; // Original Slack green
-            }, 2000);
-            })
-            .catch(err => {
-                console.error('Failed to copy text: ', err);
-            });
-    });
+      copyButton.addEventListener('click', () => {
+        copyToClipboard();
+        // Provide visual feedback
+        copyButton.textContent = "Copied!";
+        copyButton.style.backgroundColor = "#28a745"; // Green background for success
+      
+        // Revert to original after 2 seconds
+        setTimeout(() => {
+          copyButton.textContent = "Copy to Clipboard";
+          copyButton.style.backgroundColor = "#007a5a"; // Original Slack green
+        }, 2000);
+      });
 
     addlinkField(); // Initial link field
     updatePreview(); // Initial preview update
