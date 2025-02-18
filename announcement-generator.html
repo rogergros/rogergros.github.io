@@ -15,6 +15,15 @@
       background-color: #f8f9fa; /* Slack's light gray background */
     }
 
+    /* Blockquote Styles */
+    blockquote {
+      border-left: 4px solid #3f0e40; /* Slack purple border */
+      margin: 0;
+      padding-left: 10px;
+      color: #1d1c1d; /* Dark text color */
+      margin-bottom: 5px;
+    }
+
     .container {
       display: flex;
       width: 100%;
@@ -76,6 +85,21 @@
         padding: 10px 20px 0 20px;
         background-color: #ffffff; /* White background for the preview content */
         
+    }
+
+    .html-preview > p {
+        margin: 0;
+    }
+
+    /* Link Styles for Preview */
+    .html-preview a {
+      color: #1264a3; /* Slack blue color for links */
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .html-preview a:hover {
+      text-decoration: underline; /* Underline on hover */
     }
 
     .copy-button {
@@ -245,24 +269,31 @@
 
       // Build HTML preview
       let previewHTML = `
-<b>${typeText} ${title}</b><br><br>
+<p><b>${typeText} ${title}</b></p><br/>
 <blockquote>🌟 <i><b>Description</b> - What's new?</i></blockquote>${whatsNew}<br><br>
 <blockquote>🎯 <i><b>Impact</b> - Why This Matters?</i></blockquote>${whyMatters}<br><br>
 `;
 
       // Add Kudos section if filled
       if (kudos) {
-        previewHTML += `<blockquote>🙇 <i><b>Kudos</b> - Thanks for your collaboration</i><blockquote>${kudos}<br>`;
+        previewHTML += `<blockquote>🙇 <i><b>Kudos</b> - Thanks for your collaboration</i></blockquote>${kudos}<br><br>`;
       }
 
+
       const linkItems = linksContainer.querySelectorAll('.link-item');
+      let linksHTML = '';
+
       linkItems.forEach(link => {
         const linkText = link.querySelector('.link-text').value;
         const linkUrl = link.querySelector('.link-url').value;
         if (linkText && linkUrl) {
-          previewHTML += `🔗 <b><a href="${linkUrl}" target="_blank">${linkText}</a></b><br/>`;
+          linksHTML += `<li><a href="${linkUrl}" target="_blank">${linkText}</a></li>`;
         }
       });
+
+      if (linksHTML) {
+        previewHTML += `<blockquote>🔗 <i><b>Useful links</b></i></blockquote><ul>${linksHTML}</ul>`;
+      }
 
       htmlPreview.innerHTML = previewHTML;
     }
