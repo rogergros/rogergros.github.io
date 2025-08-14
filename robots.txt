@@ -1,3 +1,0 @@
-# Hey bot!
-User-agent: *
-Allow: /
