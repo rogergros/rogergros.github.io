@@ -1,0 +1,42 @@
+---
+layout: default
+---
+
+{% assign category_name = page.name | default: page.url | split: '/' | last %}
+{% assign posts = site.posts | where_exp: "post", "post.categories contains category_name" | sort: 'date' | reverse %}
+
+<div class="category">
+  <h1>All posts in category "{{ category_name }}"</h1>
+  
+  {% if posts.size > 0 %}
+    <p>{{ posts.size }} post{% if posts.size != 1 %}s{% endif %}</p>
+    
+    <div class="posts">
+      {% for post in posts %}
+        <article class="post-preview">
+          <h3 class="post-title">
+            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          </h3>
+          <div class="post-meta">
+            <time datetime="{{ post.date | date_to_xmlschema }}">
+              {{ post.date | date: "%B %d, %Y" }}
+            </time>
+            {% if post.categories.size > 0 %}
+              <span class="categories">
+                {% for category in post.categories %}
+                  <a href="/category/{{ category }}/" class="category-link">{{ category }}</a>{% unless forloop.last %}, {% endunless %}
+                {% endfor %}
+              </span>
+            {% endif %}
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p>No posts found in this category.</p>
+  {% endif %}
+  
+  <div class="back-link">
+    <a href="{{ '/' | relative_url }}">← Back to Home</a>
+  </div>
+</div>
