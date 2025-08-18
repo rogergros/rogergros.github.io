@@ -14,10 +14,35 @@ layout: default
                 {% endfor %}
             {% endif %}
         </div>
+        {% if page.featured_image %}
+        <div class="post-featured-image">
+            <img src="{{ page.featured_image | relative_url }}" alt="{{ page.title }}" class="featured-image" data-zoomable>
+        </div>
+        {% endif %}
     </header>
 
     <div class="post-content">
         {{ content }}
+        
+        {% if page.images %}
+        <div class="post-gallery">
+            <h3>Gallery</h3>
+            <div class="image-gallery">
+                {% for image in page.images %}
+                <div class="gallery-item" data-orientation="{{ image.orientation | default: 'auto' }}">
+                    <img src="{{ image.url | relative_url }}" 
+                         alt="{{ image.alt | default: page.title }}" 
+                         class="gallery-image" 
+                         data-zoomable
+                         data-orientation="{{ image.orientation | default: 'auto' }}">
+                    {% if image.caption %}
+                    <div class="image-caption">{{ image.caption }}</div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
     </div>
     
     <nav class="post-navigation">
@@ -44,3 +69,12 @@ layout: default
         </div>
     </nav>
 </article>
+
+<!-- Image Zoom Modal -->
+<div id="imageModal" class="image-modal">
+    <div class="modal-content">
+        <span class="modal-close">&times;</span>
+        <img id="modalImage" class="modal-image" src="" alt="">
+        <div class="modal-caption"></div>
+    </div>
+</div>
