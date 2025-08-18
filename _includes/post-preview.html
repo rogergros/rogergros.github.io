@@ -1,0 +1,37 @@
+<li class="post-item">
+    <h2 class="post-title">
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+    </h2>
+    <div class="post-content-row">
+        <div class="post-content">
+            <div class="post-meta">
+                {{ post.date | date: "%B %d, %Y" }}
+                {% if post.categories.size > 0 %}
+                    • 
+                    {% for category in post.categories %}
+                        <a href="/category/{{ category }}/">{{ category }}</a>{% unless forloop.last %}, {% endunless %}
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div class="post-excerpt">
+                {% if post.excerpt %}
+                    {{ post.excerpt }}
+                {% else %}
+                    {% assign first_paragraph = post.content | split: '</p>' | first | append: '</p>' %}
+                    {% if first_paragraph contains '<p>' %}
+                        {{ first_paragraph }}
+                    {% else %}
+                        <p>{{ post.content | strip_html | truncatewords: 100 }}</p>
+                    {% endif %}
+                {% endif %}
+            </div>
+        </div>
+        {% if post.featured_image %}
+        <div class="post-featured-image">
+            <a href="{{ post.url | relative_url }}">
+                <img src="{{ post.featured_image | relative_url }}" alt="{{ post.title }}" class="post-thumbnail">
+            </a>
+        </div>
+        {% endif %}
+    </div>
+</li>

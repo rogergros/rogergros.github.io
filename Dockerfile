@@ -1,3 +1,9 @@
+FROM ruby:3.2
+
+# Install build dependencies
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    && rm -rf /var/lib/apt/lists/*
 # Use the official Ruby image as base
 FROM ruby:3.2
 

@@ -6,6 +6,9 @@
 build:
 	docker build -t gros-cat .
 
+# Clean and rebuild everything
+rebuild: clean build
+
 # Run the Jekyll server
 run: build
 	docker run -p 4000:4000 -v $(PWD):/app gros-cat jekyll serve --host 0.0.0.0 --port 4000
@@ -18,3 +21,4 @@ run-reload: build
 clean:
 	docker stop $$(docker ps -q --filter ancestor=gros-cat) 2>/dev/null || true
 	docker rm $$(docker ps -aq --filter ancestor=gros-cat) 2>/dev/null || true
+	docker rmi gros-cat 2>/dev/null || true

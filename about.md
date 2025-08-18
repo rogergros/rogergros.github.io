@@ -1,19 +1,20 @@
 ---
-layout: page
+layout: default
 title: About
-permalink: /about/
 ---
+
+# About
+
+Hi, I'm Roger Gros. I'm a developer and photographer based in Barcelona.
+
+## What I Do
+
+I work on web development projects and enjoy capturing moments through photography. This blog is where I share my thoughts on technology, creativity, and life.
+
+## Get in Touch
+
+Feel free to reach out if you'd like to connect or collaborate on a project.
 
 ## About This Site
 
-This is a basic Jekyll site created for GitHub Pages. You can customize this page to tell visitors about yourself or your project.
-
-### Features
-
-- **Simple and Clean**: Built with Jekyll and the Minima theme
-- **GitHub Pages Ready**: Configured to work seamlessly with GitHub Pages
-- **Easy to Customize**: Modify the `_config.yml` and content files to personalize your site
-
-### Contact
-
-Feel free to reach out if you have any questions or suggestions!
+This site is built with Jekyll and uses a minimal theme inspired by clean, readable design principles. The focus is on content and readability.

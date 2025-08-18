@@ -131,7 +131,7 @@ a {
   
   .post-title {
     font-size: 1.5rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 8px;
     
     a {
       color: $text-color;
@@ -145,12 +145,20 @@ a {
   .post-meta {
     color: $muted-color;
     font-size: 0.9rem;
-    margin-bottom: 1rem;
+    margin-bottom: 8px;
   }
   
   .post-excerpt {
     color: #cccccc;
     line-height: 1.6;
+    
+    p:first-child {
+      margin-top: 0;
+    }
+    
+    p {
+      margin-bottom: 16px;
+    }
   }
 }
 
