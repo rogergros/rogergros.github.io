@@ -16,7 +16,14 @@ layout: default
         </div>
         {% if page.featured_image %}
         <div class="post-featured-image">
-            <img src="{{ page.featured_image | relative_url }}" alt="{{ page.title }}" class="featured-image" data-zoomable>
+            <img src="{{ page.featured_image.url | relative_url }}" 
+                 alt="{{ page.featured_image.alt | default: page.title | append: ' - Featured Image' }}" 
+                 class="featured-image" 
+                 data-zoomable
+                 data-orientation="{{ page.featured_image.orientation | default: 'auto' }}">
+            {% if page.featured_image.caption %}
+            <div class="image-caption">{{ page.featured_image.caption }}</div>
+            {% endif %}
         </div>
         {% endif %}
     </header>

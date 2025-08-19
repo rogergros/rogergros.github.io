@@ -2,8 +2,8 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Auto-detect image orientations and adjust layout
     function adjustImageLayout() {
+        // Handle gallery items
         const galleryItems = document.querySelectorAll('.gallery-item');
-        
         galleryItems.forEach(item => {
             const img = item.querySelector('.gallery-image');
             if (img && img.complete) {
@@ -20,11 +20,31 @@ document.addEventListener('DOMContentLoaded', function() {
                 img.setAttribute('data-orientation', orientation);
             }
         });
+        
+        // Handle featured images
+        const featuredImages = document.querySelectorAll('.post-featured-image [data-zoomable]');
+        featuredImages.forEach(img => {
+            if (img && img.complete) {
+                const aspectRatio = img.naturalWidth / img.naturalHeight;
+                let orientation = 'square';
+                
+                if (aspectRatio > 1.3) {
+                    orientation = 'horizontal';
+                } else if (aspectRatio < 0.8) {
+                    orientation = 'vertical';
+                }
+                
+                img.setAttribute('data-orientation', orientation);
+            }
+        });
     }
     
     // Run layout adjustment when images load
-    const images = document.querySelectorAll('.gallery-image');
-    images.forEach(img => {
+    const galleryImages = document.querySelectorAll('.gallery-image');
+    const featuredImages = document.querySelectorAll('.post-featured-image [data-zoomable]');
+    const allImagesForLayout = [...galleryImages, ...featuredImages];
+    
+    allImagesForLayout.forEach(img => {
         if (img.complete) {
             adjustImageLayout();
         } else {
@@ -59,7 +79,10 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Get all zoomable images and build navigation array
     function buildImageArray() {
-        allImages = Array.from(document.querySelectorAll('[data-zoomable]'));
+        // Include both featured images and gallery images
+        const featuredImages = document.querySelectorAll('.post-featured-image [data-zoomable]');
+        const galleryImages = document.querySelectorAll('.image-gallery [data-zoomable]');
+        allImages = [...featuredImages, ...galleryImages];
     }
     
     // Add click event to all zoomable images
@@ -126,16 +149,33 @@ document.addEventListener('DOMContentLoaded', function() {
         // Reset zoom and position
         resetImageTransform();
         
-        // Find and display caption if available
+        // Ensure caption starts visible
+        modalCaption.classList.remove('fade-out');
+        
+        // Find and display caption if available, otherwise use alt text
         const originalImg = document.querySelector(`[data-zoomable][src="${src}"]`);
         if (originalImg) {
-            const caption = originalImg.closest('.gallery-item')?.querySelector('.image-caption');
+            // Check if it's a featured image or gallery image
+            const isFeaturedImage = originalImg.closest('.post-featured-image');
+            const caption = originalImg.closest('.gallery-item, .post-featured-image')?.querySelector('.image-caption');
+            
             if (caption) {
+                // Use explicit caption if available
                 modalCaption.textContent = caption.textContent;
                 modalCaption.style.display = 'block';
+            } else if (isFeaturedImage) {
+                // For featured images, use alt text as caption
+                modalCaption.textContent = alt || 'Featured Image';
+                modalCaption.style.display = 'block';
             } else {
-                modalCaption.style.display = 'none';
+                // For gallery images without explicit captions, use alt text
+                modalCaption.textContent = alt || 'Image';
+                modalCaption.style.display = 'block';
             }
+        } else {
+            // Fallback to alt text if we can't find the original image
+            modalCaption.textContent = alt || 'Image';
+            modalCaption.style.display = 'block';
         }
         
         // Prevent body scroll
@@ -179,15 +219,38 @@ document.addEventListener('DOMContentLoaded', function() {
         translateX = 0;
         translateY = 0;
         updateImageTransform();
+        
+        // Ensure caption is visible when reset
+        modalCaption.classList.remove('fade-out');
     }
     
     function updateImageTransform() {
         modalImg.style.transform = `translate(${translateX}px, ${translateY}px) scale(${currentScale})`;
+        
+        // Fade caption based on zoom level with a small delay to prevent flickering
+        clearTimeout(window.captionFadeTimeout);
+        if (currentScale > 1.1) {
+            window.captionFadeTimeout = setTimeout(() => {
+                modalCaption.classList.add('fade-out');
+            }, 100);
+        } else {
+            modalCaption.classList.remove('fade-out');
+        }
     }
     
     function updateImageTransformWithTransition() {
         modalImg.style.transition = 'transform 0.3s ease-out';
         modalImg.style.transform = `translate(${translateX}px, ${translateY}px) scale(${currentScale})`;
+        
+        // Fade caption based on zoom level with a small delay to prevent flickering
+        clearTimeout(window.captionFadeTimeout);
+        if (currentScale > 1.1) {
+            window.captionFadeTimeout = setTimeout(() => {
+                modalCaption.classList.add('fade-out');
+            }, 100);
+        } else {
+            modalCaption.classList.remove('fade-out');
+        }
         
         // Remove transition after animation completes
         setTimeout(() => {
@@ -263,6 +326,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 translateX = 0;
                 translateY = 0;
                 updateImageTransformWithTransition();
+                
+                // Ensure caption is visible when back to 1x
+                modalCaption.classList.remove('fade-out');
                 return;
             }
             
@@ -324,6 +390,9 @@ document.addEventListener('DOMContentLoaded', function() {
             translateX = 0;
             translateY = 0;
             updateImageTransformWithTransition();
+            
+            // Ensure caption is visible when back to 1x
+            modalCaption.classList.remove('fade-out');
             return;
         }
         
@@ -375,6 +444,9 @@ document.addEventListener('DOMContentLoaded', function() {
         translateX = 0;
         translateY = 0;
         updateImageTransformWithTransition();
+        
+        // Ensure caption is visible when reset
+        modalCaption.classList.remove('fade-out');
     });
     
     // Add grab cursor to modal image

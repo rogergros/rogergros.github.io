@@ -1,9 +1,13 @@
 ---
 layout: post
-title: "Image Gallery Demo - High Resolution Photos with Zoom"
+title: "My trip to the tuscany: Golden sunsets, food and precious towns"
 date: 2024-12-20 12:00:00 +0000
 categories: photos
-featured_image: /assets/images/posts/tuscany_4.jpg
+featured_image:
+  url: /assets/images/posts/tuscany_4.jpg
+  alt: "Golden fields with a line of trees"
+  caption: "Sunsets in the tuscany are really beautiful"
+  orientation: vertical
 images:
   - url: /assets/images/posts/tuscany_1.jpg
     alt: "Beautiful landscape photography"
