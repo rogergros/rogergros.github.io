@@ -613,6 +613,7 @@ a {
   position: relative;
   overflow: hidden;
   border-radius: 12px;
+  transition: transform 0.3s ease;
   
   .featured-image {
     width: 100%;
@@ -622,9 +623,15 @@ a {
     border-radius: 12px;
     transition: transform 0.3s ease;
     cursor: pointer;
+    display: block;
+  }
+  
+  &:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
     
-    &:hover {
-      transform: scale(1.02);
+    .featured-image {
+      transform: scale(1.05);
     }
   }
   
