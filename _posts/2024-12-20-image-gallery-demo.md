@@ -3,21 +3,25 @@ layout: post
 title: "Image Gallery Demo - High Resolution Photos with Zoom"
 date: 2024-12-20 12:00:00 +0000
 categories: photos
-featured_image: /assets/images/posts/demo-featured.jpg
+featured_image: /assets/images/posts/tuscany_4.jpg
 images:
-  - url: /assets/images/posts/demo-1.jpg
+  - url: /assets/images/posts/tuscany_1.jpg
     alt: "Beautiful landscape photography"
     caption: "A stunning mountain landscape at golden hour"
     orientation: horizontal
-  - url: /assets/images/posts/demo-2.jpg
+  - url: /assets/images/posts/tuscany_2.jpg
     alt: "Urban street photography"
     caption: "Street life captured in black and white"
     orientation: vertical
-  - url: /assets/images/posts/demo-3.jpg
+  - url: /assets/images/posts/tuscany_3.jpg
     alt: "Macro photography example"
     caption: "Close-up details of natural textures"
     orientation: horizontal
-  - url: /assets/images/posts/demo-4.jpg
+  - url: /assets/images/posts/tuscany_4.jpg
+    alt: "Portrait photography"
+    caption: "Professional portrait with natural lighting"
+    orientation: vertical
+  - url: /assets/images/posts/cinque_terre_1.jpg
     alt: "Portrait photography"
     caption: "Professional portrait with natural lighting"
     orientation: vertical

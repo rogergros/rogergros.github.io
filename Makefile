@@ -11,11 +11,13 @@ rebuild: clean build
 
 # Run the Jekyll server
 run: build
-	docker run -p 4000:4000 -v $(PWD):/app gros-cat jekyll serve --host 0.0.0.0 --port 4000
+	docker rm -f gros-cat 2>/dev/null || true
+	docker run --name gros-cat -p 4000:4000 -v $(PWD):/app gros-cat jekyll serve --host 0.0.0.0 --port 4000
 
 # Run the Jekyll server with live reload (watch mode)
 run-reload: build
-	docker run -p 4000:4000 -v $(PWD):/app gros-cat jekyll serve --host 0.0.0.0 --port 4000 --watch
+	docker rm -f gros-cat 2>/dev/null || true
+	docker run --name gros-cat -p 4000:4000 -v $(PWD):/app gros-cat jekyll serve --host 0.0.0.0 --port 4000 --watch
 
 # Clean up Docker containers and images
 clean:
