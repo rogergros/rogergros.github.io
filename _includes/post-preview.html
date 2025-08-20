@@ -29,7 +29,11 @@
         {% if post.featured_image %}
         <div class="post-featured-image">
             <a href="{{ post.url | relative_url }}">
-                <img src="{{ post.featured_image | relative_url }}" alt="{{ post.title }}" class="post-thumbnail">
+                {% if post.featured_image.url %}
+                    <img src="{{ post.featured_image.url | relative_url }}" alt="{{ post.featured_image.alt | default: post.title }}" class="post-thumbnail">
+                {% else %}
+                    <img src="{{ post.featured_image | relative_url }}" alt="{{ post.title }}" class="post-thumbnail">
+                {% endif %}
             </a>
         </div>
         {% endif %}
