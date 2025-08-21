@@ -9,14 +9,14 @@ featured_image:
   caption: "Sunsets in the tuscany are really beautiful"
   orientation: vertical
 images:
-  - url: /assets/images/posts/tuscany_1.jpg
-    alt: "Beautiful landscape photography"
-    caption: "A stunning mountain landscape at golden hour"
-    orientation: horizontal
   - url: /assets/images/posts/tuscany_2.jpg
     alt: "Urban street photography"
     caption: "Street life captured in black and white"
     orientation: vertical
+  - url: /assets/images/posts/tuscany_1.jpg
+    alt: "Beautiful landscape photography"
+    caption: "A stunning mountain landscape at golden hour"
+    orientation: horizontal
   - url: /assets/images/posts/tuscany_3.jpg
     alt: "Macro photography example"
     caption: "Close-up details of natural textures"

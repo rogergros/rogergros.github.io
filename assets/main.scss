@@ -694,9 +694,10 @@ a {
   }
 }
 
-// Image gallery
+// Image gallery - Masonry Layout
 .post-gallery {
   margin: $spacing-xl 0;
+  width: 100%; // Ensure gallery matches container width
   
   h3 {
     margin-bottom: $spacing-lg;
@@ -705,11 +706,11 @@ a {
   }
   
   .image-gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: $spacing-sm;
-    grid-auto-rows: 200px;
-    grid-auto-flow: dense;
+    // Masonry layout using CSS columns
+    column-count: 2;
+    column-gap: $spacing-md;
+    column-fill: balance;
+    width: 100%; // Match post content width
     
     .gallery-item {
       position: relative;
@@ -719,38 +720,26 @@ a {
       cursor: zoom-in;
       @include hover-scale;
       
-      // Grid spans
-      grid-column: span 1;
-      grid-row: span 1;
-      
-      &[data-orientation="horizontal"] {
-        grid-column: span 2;
-        grid-row: span 1;
-      }
-      
-      &[data-orientation="vertical"] {
-        grid-column: span 1;
-        grid-row: span 2;
-      }
-      
-      &[data-orientation="large"] {
-        grid-column: span 2;
-        grid-row: span 2;
-      }
+      // Prevent breaking across columns
+      break-inside: avoid;
+      page-break-inside: avoid;
+      display: inline-block;
+      width: 100%;
+      margin-bottom: $spacing-sm;
       
       .gallery-image {
         width: 100%;
-        height: 100%;
-        object-fit: cover;
+        height: auto;
         display: block;
         transition: transform 0.3s ease;
+        border-radius: $border-radius;
       }
       
       &:hover {
         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
         
         .gallery-image {
-          transform: scale(1.05);
+          transform: scale(1.02);
         }
       }
       
@@ -765,6 +754,7 @@ a {
         font-size: 0.9rem;
         transform: translateY(100%);
         transition: transform 0.3s ease;
+        border-radius: 0 0 $border-radius $border-radius;
       }
       
       &:hover .image-caption {
@@ -775,29 +765,35 @@ a {
   
   @include responsive(tablet) {
     .image-gallery {
-      grid-template-columns: 1fr;
-      grid-auto-rows: 250px;
-      gap: $spacing-sm;
+      column-count: 2;
+      column-gap: $spacing-sm;
       
       .gallery-item {
-        grid-column: span 1 !important;
-        grid-row: span 1 !important;
+        margin-bottom: $spacing-sm;
       }
     }
   }
   
   @include responsive(mobile) {
     .image-gallery {
-      grid-auto-rows: 200px;
-      gap: $spacing-xs * 1.5;
+      column-count: 1;
+      column-gap: 0;
+      
+      .gallery-item {
+        margin-bottom: $spacing-xs * 1.5;
+        max-width: 100%;
+      }
     }
   }
   
   @include responsive(desktop) {
     .image-gallery {
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      grid-auto-rows: 250px;
-      gap: $spacing-md;
+      column-count: 2;
+      column-gap: $spacing-lg;
+      
+      .gallery-item {
+        margin-bottom: $spacing-md;
+      }
     }
   }
 }

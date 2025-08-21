@@ -1,23 +1,18 @@
 // Enhanced Image Gallery with iPhone Photos App-like Behavior
 document.addEventListener('DOMContentLoaded', function() {
-    // Auto-detect image orientations and adjust layout
-    function adjustImageLayout() {
-        // Handle gallery items
+    // Preserve original image orientations for masonry layout
+    function preserveImageOrientations() {
+        // Handle gallery items - preserve original orientations from frontmatter
         const galleryItems = document.querySelectorAll('.gallery-item');
         galleryItems.forEach(item => {
             const img = item.querySelector('.gallery-image');
             if (img && img.complete) {
-                const aspectRatio = img.naturalWidth / img.naturalHeight;
-                let orientation = 'square';
-                
-                if (aspectRatio > 1.3) {
-                    orientation = 'horizontal';
-                } else if (aspectRatio < 0.8) {
-                    orientation = 'vertical';
+                // Keep existing data-orientation attributes from the template
+                // The masonry layout will naturally preserve aspect ratios
+                const existingOrientation = img.getAttribute('data-orientation');
+                if (!existingOrientation) {
+                    img.setAttribute('data-orientation', 'auto');
                 }
-                
-                item.setAttribute('data-orientation', orientation);
-                img.setAttribute('data-orientation', orientation);
             }
         });
         
@@ -25,35 +20,27 @@ document.addEventListener('DOMContentLoaded', function() {
         const featuredImages = document.querySelectorAll('.post-featured-image [data-zoomable]');
         featuredImages.forEach(img => {
             if (img && img.complete) {
-                const aspectRatio = img.naturalWidth / img.naturalHeight;
-                let orientation = 'square';
-                
-                if (aspectRatio > 1.3) {
-                    orientation = 'horizontal';
-                } else if (aspectRatio < 0.8) {
-                    orientation = 'vertical';
+                // Keep existing data-orientation attributes from the template
+                const existingOrientation = img.getAttribute('data-orientation');
+                if (!existingOrientation) {
+                    img.setAttribute('data-orientation', 'auto');
                 }
-                
-                img.setAttribute('data-orientation', orientation);
             }
         });
     }
     
-    // Run layout adjustment when images load
+    // Run orientation preservation when images load
     const galleryImages = document.querySelectorAll('.gallery-image');
     const featuredImages = document.querySelectorAll('.post-featured-image [data-zoomable]');
     const allImagesForLayout = [...galleryImages, ...featuredImages];
     
     allImagesForLayout.forEach(img => {
         if (img.complete) {
-            adjustImageLayout();
+            preserveImageOrientations();
         } else {
-            img.addEventListener('load', adjustImageLayout);
+            img.addEventListener('load', preserveImageOrientations);
         }
     });
-    
-    // Run layout adjustment on window resize
-    window.addEventListener('resize', adjustImageLayout);
     
     // Modal elements
     const modal = document.getElementById('imageModal');
