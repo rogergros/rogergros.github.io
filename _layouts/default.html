@@ -44,8 +44,12 @@
             <div class="footer-content">
                 <div class="footer-top">
                     <div class="social-links">
-                        <a href="https://linkedin.com/in/your-profile" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                        <a href="https://bsky.app/profile/your-handle" target="_blank" rel="noopener noreferrer">Bluesky</a>
+                        {% if site.social.linkedin %}
+                        <a href="https://linkedin.com/in/{{ site.social.linkedin }}" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                        {% endif %}
+                        {% if site.social.bluesky %}
+                        <a href="https://bsky.app/profile/{{ site.social.bluesky }}" target="_blank" rel="noopener noreferrer">Bluesky</a>
+                        {% endif %}
                     </div>
                     <div class="rss-links">
                         <span class="rss-label">RSS:</span>
