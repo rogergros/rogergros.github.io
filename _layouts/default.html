@@ -7,6 +7,16 @@
     <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
     <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
     {% feed_meta %}
+    
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/favicons/apple-touch-icon.png' | relative_url }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/favicons/favicon-32x32.png' | relative_url }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ '/assets/favicons/favicon-16x16.png' | relative_url }}">
+    <link rel="manifest" href="{{ '/assets/favicons/site.webmanifest' | relative_url }}">
+    <link rel="shortcut icon" href="{{ '/assets/favicons/favicon.ico' | relative_url }}">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="{{ '/assets/favicons/browserconfig.xml' | relative_url }}">
+    <meta name="theme-color" content="#ffffff">
     <!-- Category RSS Feeds -->
     <link rel="alternate" type="application/rss+xml" title="{{ site.title }} - Management" href="{{ '/feed-management.xml' | relative_url }}">
     <link rel="alternate" type="application/rss+xml" title="{{ site.title }} - Personal" href="{{ '/feed-personal.xml' | relative_url }}">
