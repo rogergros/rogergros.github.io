@@ -1,0 +1,211 @@
+---
+layout: null
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" 
+     xmlns:atom="http://www.w3.org/2005/Atom" 
+     xmlns:media="http://search.yahoo.com/mrss/" 
+     xmlns:content="http://purl.org/rss/1.0/modules/content/"
+     xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>{{ site.title | xml_escape }} - Photography</title>
+    <description>Photography posts with featured images and galleries from {{ site.title | xml_escape }} - Instagram-style visual feed with images as first-class content</description>
+    <link>{% if site.url and site.url != "" %}{{ site.url }}{% else %}https://rogergros.github.io{% endif %}{{ site.baseurl }}/category/photos/</link>
+    <atom:link href="{% if site.url and site.url != "" %}{{ site.url }}{% else %}https://rogergros.github.io{% endif %}{{ site.baseurl }}/feed-photos.xml" rel="self" type="application/rss+xml"/>
+    <language>en-us</language>
+    <copyright>© {{ site.time | date: "%Y" }} {{ site.title | xml_escape }}</copyright>
+    <managingEditor>{% if site.email and site.email != "your-email@example.com" %}{{ site.email | xml_escape }} ({{ site.title | xml_escape }}){% else %}contact@rogergros.com ({{ site.title | xml_escape }}){% endif %}</managingEditor>
+    <webMaster>{% if site.email and site.email != "your-email@example.com" %}{{ site.email | xml_escape }} ({{ site.title | xml_escape }}){% else %}contact@rogergros.com ({{ site.title | xml_escape }}){% endif %}</webMaster>
+    <pubDate>{{ site.time | date_to_rfc822 }}</pubDate>
+    <lastBuildDate>{{ site.time | date_to_rfc822 }}</lastBuildDate>
+    <generator>Jekyll v{{ jekyll.version }}</generator>
+    <docs>https://www.rssboard.org/rss-specification</docs>
+    <ttl>1440</ttl>
+    {% assign photos_posts = site.posts | where_exp: "post", "post.categories contains 'photos'" | sort: 'date' | reverse %}
+    {% comment %} Feed image using the most recent photo post's featured image {% endcomment %}
+    {% assign recent_photo_post = photos_posts.first %}
+    {% if recent_photo_post.featured_image %}
+    <image>
+      <url>{% if site.url and site.url != "" %}{{ site.url }}{% else %}https://rogergros.github.io{% endif %}{{ site.baseurl }}{{ recent_photo_post.featured_image.url }}</url>
+      <title>{{ site.title | xml_escape }} - Photography</title>
+      <link>{% if site.url and site.url != "" %}{{ site.url }}{% else %}https://rogergros.github.io{% endif %}{{ site.baseurl }}/category/photos/</link>
+      <width>144</width>
+      <height>144</height>
+      <description>Latest photography from {{ site.title | xml_escape }}</description>
+    </image>
+    {% endif %}
+    {% for post in photos_posts limit:20 %}
+      <item>
+        <title>{{ post.title | xml_escape }}</title>
+        <link>{% if site.url and site.url != "" %}{{ site.url }}{% else %}https://rogergros.github.io{% endif %}{{ site.baseurl }}{{ post.url }}</link>
+        <guid isPermaLink="true">{% if site.url and site.url != "" %}{{ site.url }}{% else %}https://rogergros.github.io{% endif %}{{ site.baseurl }}{{ post.url }}</guid>
+        <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
+        <dc:creator><![CDATA[{{ site.title | xml_escape }}]]></dc:creator>
+        
+        {% comment %} Primary enclosure - MANDATORY for every item {% endcomment %}
+        {% assign primary_image = post.featured_image %}
+        {% assign primary_image_url = "" %}
+        {% assign primary_image_alt = "" %}
+        {% assign primary_image_caption = "" %}
+        
+        {% if primary_image %}
+          {% assign primary_image_url = primary_image.url %}
+          {% assign primary_image_alt = primary_image.alt %}
+          {% assign primary_image_caption = primary_image.caption %}
+        {% elsif post.images and post.images.size > 0 %}
+          {% comment %} Use first gallery image {% endcomment %}
+          {% assign primary_image_url = post.images[0].url %}
+          {% assign primary_image_alt = post.images[0].alt %}
+          {% assign primary_image_caption = post.images[0].caption %}
+        {% else %}
+          {% comment %} Skip posts without images - this is a photo feed {% endcomment %}
+          {% continue %}
+        {% endif %}
+        
+        {% comment %} Every photos post MUST have an enclosure {% endcomment %}
+        {% comment %} Get file size from post metadata - NO ESTIMATES {% endcomment %}
+        {% assign file_size = 0 %}
+        
+        {% if post.featured_image and post.featured_image.file_size %}
+          {% assign file_size = post.featured_image.file_size %}
+        {% elsif post.images and post.images.size > 0 and post.images[0].file_size %}
+          {% assign file_size = post.images[0].file_size %}
+        {% else %}
+          {% comment %} No file size available - skip this post {% endcomment %}
+          {% continue %}
+        {% endif %}
+        
+        <enclosure url="{% if site.url and site.url != "" %}{{ site.url }}{% else %}https://rogergros.github.io{% endif %}{{ site.baseurl }}{{ primary_image_url }}" type="image/jpeg" length="{{ file_size }}"/>
+        
+        {% comment %} Plain text description for feed readers - TRIM TO ≤200-260 chars {% endcomment %}
+        {% capture plain_description %}
+          {{ post.title | xml_escape }}
+          {% if primary_image_caption and primary_image_caption != "" %} - {{ primary_image_caption | xml_escape }}{% endif %}
+          {% if post.excerpt %} {{ post.excerpt | strip_html | truncatewords: 25 | xml_escape }}{% else %} {{ post.content | strip_html | truncatewords: 25 | xml_escape }}{% endif %}
+          {% if post.images and post.images.size > 0 %} Gallery: {{ post.images.size }} images.{% endif %}
+        {% endcapture %}
+        {% comment %} Ensure description is ≤260 characters {% endcomment %}
+        {% assign trimmed_description = plain_description | strip | truncate: 260 %}
+        
+        {% comment %} Rich HTML content for advanced feed readers {% endcomment %}
+        {% capture post_content %}
+          <figure style="margin: 0 0 20px 0; text-align: center;">
+            <a href="{% if site.url and site.url != "" %}{{ site.url }}{% else %}https://rogergros.github.io{% endif %}{{ site.baseurl }}{{ primary_image_url }}" target="_blank">
+              <img src="{% if site.url and site.url != "" %}{{ site.url }}{% else %}https://rogergros.github.io{% endif %}{{ site.baseurl }}{{ primary_image_url }}" 
+                   alt="{{ primary_image_alt | xml_escape }}" 
+                   style="max-width: 100%; height: auto; display: block; margin: 0 auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" />
+            </a>
+            {% if primary_image_caption and primary_image_caption != "" %}
+              <figcaption style="margin-top: 12px; font-style: italic; color: #666; font-size: 16px; line-height: 1.4;">{{ primary_image_caption | xml_escape }}</figcaption>
+            {% endif %}
+          </figure>
+          
+          <div style="font-size: 18px; line-height: 1.6; color: #333; margin: 20px 0;">
+            {{ post.content }}
+          </div>
+          
+          {% if post.images and post.images.size > 0 %}
+            <div style="margin: 30px 0;">
+              <h3 style="color: #333; font-size: 24px; margin-bottom: 20px; text-align: center; border-bottom: 3px solid #007acc; padding-bottom: 10px; display: inline-block; width: 100%;">📸 Photo Gallery</h3>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 20px;">
+                {% for image in post.images %}
+                  <figure style="margin: 0; background: #f8f9fa; border-radius: 12px; overflow: hidden; box-shadow: 0 6px 20px rgba(0,0,0,0.1);">
+                    <a href="{% if site.url and site.url != "" %}{{ site.url }}{% else %}https://rogergros.github.io{% endif %}{{ site.baseurl }}{{ image.url }}" target="_blank">
+                      <img src="{% if site.url and site.url != "" %}{{ site.url }}{% else %}https://rogergros.github.io{% endif %}{{ site.baseurl }}{{ image.url }}" 
+                           alt="{{ image.alt | xml_escape }}" 
+                           style="width: 100%; height: auto; display: block;" />
+                    </a>
+                    {% if image.caption %}
+                      <figcaption style="padding: 15px; font-style: italic; color: #555; font-size: 15px; line-height: 1.4; text-align: center; background: #f8f9fa;">{{ image.caption | xml_escape }}</figcaption>
+                    {% endif %}
+                  </figure>
+                {% endfor %}
+              </div>
+            </div>
+          {% endif %}
+        {% endcapture %}
+        
+        <description>{{ trimmed_description | xml_escape }}</description>
+        <content:encoded><![CDATA[{{ post_content }}]]></content:encoded>
+        
+        {% comment %} Media RSS with proper thumbnails and metadata - MANDATORY for every item {% endcomment %}
+        <media:group>
+          {% comment %} Primary image with full metadata {% endcomment %}
+          {% comment %} Get dimensions from post metadata - NO DEFAULTS {% endcomment %}
+          {% assign width = "" %}
+          {% assign height = "" %}
+          
+          {% if post.featured_image %}
+            {% assign width = post.featured_image.width %}
+            {% assign height = post.featured_image.height %}
+          {% elsif post.images and post.images.size > 0 %}
+            {% assign width = post.images[0].width %}
+            {% assign height = post.images[0].height %}
+          {% else %}
+            {% comment %} No dimensions available - skip {% endcomment %}
+            {% assign width = "" %}
+            {% assign height = "" %}
+          {% endif %}
+            
+            <media:content url="{% if site.url and site.url != "" %}{{ site.url }}{% else %}https://rogergros.github.io{% endif %}{{ site.baseurl }}{{ primary_image_url }}" 
+                          medium="image" 
+                          type="image/jpeg" 
+                          expression="full"{% if width and width != "" %}
+                          width="{{ width }}"{% endif %}{% if height and height != "" %}
+                          height="{{ height }}"{% endif %}{% if file_size and file_size > 0 %}
+                          fileSize="{{ file_size }}"{% endif %}>
+              <media:title type="plain">{{ post.title | xml_escape }}</media:title>
+              <media:description type="plain">{% if primary_image_caption and primary_image_caption != "" %}{{ primary_image_caption | xml_escape }}{% else %}{{ post.excerpt | strip_html | truncatewords: 20 | xml_escape }}{% endif %}</media:description>
+              <media:keywords>{{ post.categories | join: ', ' | xml_escape }}{% if post.tags %}, {{ post.tags | join: ', ' | xml_escape }}{% endif %}</media:keywords>
+              <media:credit role="author">{{ site.title | xml_escape }}</media:credit>
+              <media:copyright>© {{ post.date | date: "%Y" }} {{ site.title | xml_escape }}</media:copyright>
+            </media:content>
+            
+            {% comment %} Thumbnail for primary image {% endcomment %}
+            <media:thumbnail url="{% if site.url and site.url != "" %}{{ site.url }}{% else %}https://rogergros.github.io{% endif %}{{ site.baseurl }}{{ primary_image_url }}" 
+                           width="300" 
+                           height="200" />
+            
+            {% comment %} All gallery images as media content (excluding primary if it's from gallery) {% endcomment %}
+            {% if post.images %}
+              {% for image in post.images %}
+                {% comment %} Skip if this is the primary image {% endcomment %}
+                {% unless post.featured_image and image.url == primary_image_url %}
+                {% comment %} Get gallery image metadata from post - NO DEFAULTS {% endcomment %}
+                {% assign gallery_width = image.width %}
+                {% assign gallery_height = image.height %}
+                {% assign gallery_file_size = image.file_size %}
+                
+                <media:content url="{% if site.url and site.url != "" %}{{ site.url }}{% else %}https://rogergros.github.io{% endif %}{{ site.baseurl }}{{ image.url }}" 
+                              medium="image" 
+                              type="image/jpeg" 
+                              expression="full"{% if gallery_width and gallery_width != "" %}
+                              width="{{ gallery_width }}"{% endif %}{% if gallery_height and gallery_height != "" %}
+                              height="{{ gallery_height }}"{% endif %}{% if gallery_file_size and gallery_file_size > 0 %}
+                              fileSize="{{ gallery_file_size }}"{% endif %}>
+                  <media:title type="plain">{{ post.title | xml_escape }}{% if image.caption %} - {{ image.alt | xml_escape }}{% endif %}</media:title>
+                  <media:description type="plain">{% if image.caption %}{{ image.caption | xml_escape }}{% else %}{{ image.alt | xml_escape }}{% endif %}</media:description>
+                  <media:keywords>{{ post.categories | join: ', ' | xml_escape }}{% if post.tags %}, {{ post.tags | join: ', ' | xml_escape }}{% endif %}</media:keywords>
+                  <media:credit role="author">{{ site.title | xml_escape }}</media:credit>
+                  <media:copyright>© {{ post.date | date: "%Y" }} {{ site.title | xml_escape }}</media:copyright>
+                </media:content>
+                
+                {% comment %} Thumbnail for gallery image {% endcomment %}
+                <media:thumbnail url="{% if site.url and site.url != "" %}{{ site.url }}{% else %}https://rogergros.github.io{% endif %}{{ site.baseurl }}{{ image.url }}" 
+                               width="300" 
+                               height="200" />
+                {% endunless %}
+              {% endfor %}
+            {% endif %}
+        </media:group>
+        
+        {% for tag in post.tags %}
+        <category>{{ tag | xml_escape }}</category>
+        {% endfor %}
+        {% for cat in post.categories %}
+        <category>{{ cat | xml_escape }}</category>
+        {% endfor %}
+      </item>
+    {% endfor %}
+  </channel>
+</rss>

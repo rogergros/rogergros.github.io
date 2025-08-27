@@ -5,6 +5,13 @@ date: 2024-05-10
 categories: [photos]
 tags: [night-photography, low-light, long-exposure, urban-photography]
 excerpt: "Master the art of night photography with essential techniques for capturing stunning images in low light conditions."
+featured_image:
+  url: /assets/images/posts/cinque_terre_1.jpg
+  alt: "Dramatic night view of coastal town"
+  caption: "Cinque Terre illuminated under the night sky"
+  width: 4284
+  height: 5712
+  file_size: 7210488
 ---
 
 Night photography opens up a world of creative possibilities that simply don't exist during daylight hours. From the twinkling lights of city skylines to the ethereal glow of the Milky Way, night photography allows us to capture scenes with a unique atmosphere and mood that can't be replicated in bright light.

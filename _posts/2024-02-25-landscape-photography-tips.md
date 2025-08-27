@@ -3,6 +3,13 @@ layout: post
 title: "Landscape Photography: Capturing Nature's Beauty"
 date: 2024-02-25 13:10:00 +0000
 categories: photos
+featured_image:
+  url: /assets/images/posts/tuscany_3.jpg
+  alt: "Beautiful natural landscape scene"
+  caption: "Nature's beauty captured in perfect light"
+  width: 3024
+  height: 4032
+  file_size: 3854651
 ---
 
 Landscape photography is about more than just beautiful scenery—it's about capturing the essence of a place and conveying the emotions it evokes. From majestic mountains to serene seascapes, landscapes offer endless opportunities for creative expression.

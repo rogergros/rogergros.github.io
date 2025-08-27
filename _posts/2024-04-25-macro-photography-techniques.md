@@ -5,6 +5,13 @@ date: 2024-04-25
 categories: [photos]
 tags: [macro-photography, close-up, nature, technical-photography]
 excerpt: "Master the art of macro photography and discover the fascinating details of small subjects through specialized techniques and equipment."
+featured_image:
+  url: /assets/images/posts/tuscany_2.jpg
+  alt: "Detailed macro shot revealing textures"
+  caption: "Intricate details captured through macro photography"
+  width: 3024
+  height: 4032
+  file_size: 5991234
 ---
 
 Macro photography opens up a whole new world of photographic possibilities by allowing us to capture subjects at life-size or larger magnification. From the intricate details of flower petals to the fascinating textures of insects, macro photography reveals beauty and complexity that often goes unnoticed by the naked eye.

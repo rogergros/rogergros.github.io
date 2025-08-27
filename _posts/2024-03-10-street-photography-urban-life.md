@@ -5,6 +5,13 @@ date: 2024-03-10
 categories: [photos]
 tags: [street-photography, urban, documentary, street-life]
 excerpt: "Exploring the vibrant world of street photography and how to capture authentic moments in urban environments."
+featured_image:
+  url: /assets/images/posts/tuscany_2.jpg
+  alt: "Urban street scene with authentic life"
+  caption: "Capturing authentic moments in urban environments"
+  width: 3024
+  height: 4032
+  file_size: 5991234
 ---
 
 Street photography is one of the most challenging yet rewarding genres of photography. It's about capturing authentic moments, telling stories through images, and documenting the human condition in urban environments. Every city street is a stage where life unfolds in real-time, offering photographers endless opportunities to capture compelling images.

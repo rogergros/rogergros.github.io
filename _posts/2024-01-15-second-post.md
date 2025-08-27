@@ -3,6 +3,13 @@ layout: post
 title: "Second Post"
 date: 2024-01-15 14:30:00 +0000
 categories: photos
+featured_image:
+  url: /assets/images/posts/tuscany_1.jpg
+  alt: "Early photography work demonstration"
+  caption: "Exploring photography fundamentals"
+  width: 4032
+  height: 3024
+  file_size: 3092403
 ---
 
 This is a second post to test the blog functionality.

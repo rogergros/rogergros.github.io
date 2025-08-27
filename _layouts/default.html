@@ -7,6 +7,10 @@
     <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
     <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
     {% feed_meta %}
+    <!-- Category RSS Feeds -->
+    <link rel="alternate" type="application/rss+xml" title="{{ site.title }} - Management" href="{{ '/feed-management.xml' | relative_url }}">
+    <link rel="alternate" type="application/rss+xml" title="{{ site.title }} - Personal" href="{{ '/feed-personal.xml' | relative_url }}">
+    <link rel="alternate" type="application/rss+xml" title="{{ site.title }} - Photography" href="{{ '/feed-photos.xml' | relative_url }}">
     <script src="{{ '/assets/js/image-zoom.js' | relative_url }}" defer></script>
 </head>
 <body>
@@ -28,9 +32,21 @@
         
         <footer class="footer">
             <div class="footer-content">
-                <div class="social-links">
-                    <a href="https://linkedin.com/in/your-profile" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                    <a href="https://bsky.app/profile/your-handle" target="_blank" rel="noopener noreferrer">Bluesky</a>
+                <div class="footer-top">
+                    <div class="social-links">
+                        <a href="https://linkedin.com/in/your-profile" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                        <a href="https://bsky.app/profile/your-handle" target="_blank" rel="noopener noreferrer">Bluesky</a>
+                    </div>
+                    <div class="rss-links">
+                        <span class="rss-label">RSS:</span>
+                        <a href="{{ '/feed.xml' | relative_url }}" title="Subscribe to all posts">All</a>
+                        <span class="rss-separator">•</span>
+                        <a href="{{ '/feed-management.xml' | relative_url }}" title="Subscribe to Management posts">Management</a>
+                        <span class="rss-separator">•</span>
+                        <a href="{{ '/feed-personal.xml' | relative_url }}" title="Subscribe to Personal posts">Personal</a>
+                        <span class="rss-separator">•</span>
+                        <a href="{{ '/feed-photos.xml' | relative_url }}" title="Subscribe to Photography posts">Photos</a>
+                    </div>
                 </div>
                 <div class="footer-text">
                     Made with ♥ from Barcelona

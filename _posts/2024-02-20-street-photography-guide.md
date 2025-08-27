@@ -3,6 +3,13 @@ layout: post
 title: "Street Photography: Capturing Life in Motion"
 date: 2024-02-20 16:20:00 +0000
 categories: photos
+featured_image:
+  url: /assets/images/posts/cinque_terre_1.jpg
+  alt: "Street life in vibrant coastal town"
+  caption: "Life in motion through the streets of Cinque Terre"
+  width: 4284
+  height: 5712
+  file_size: 7210488
 ---
 
 Street photography is about capturing authentic moments of everyday life. It's a challenging but rewarding genre that requires quick thinking, technical skill, and a keen eye for human behavior.

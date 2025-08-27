@@ -14,6 +14,7 @@ layout: default
             {% if paginator.total_pages > 1 %}
                 (Page {{ paginator.page }} of {{ paginator.total_pages }})
             {% endif %}
+            • <a href="{{ site.baseurl }}/feed.xml" title="Subscribe to all posts RSS feed">RSS Feed</a>
         </p>
     </header>
 

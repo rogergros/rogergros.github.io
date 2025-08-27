@@ -3,6 +3,13 @@ layout: post
 title: "Mastering Photography Composition Techniques"
 date: 2024-02-15 09:45:00 +0000
 categories: photos
+featured_image:
+  url: /assets/images/posts/tuscany_4.jpg
+  alt: "Perfect composition demonstrating rule of thirds"
+  caption: "Masterful composition using leading lines and natural framing"
+  width: 4032
+  height: 3024
+  file_size: 4714913
 ---
 
 Great photography is more than just pointing and shooting. Understanding composition principles can transform ordinary snapshots into compelling images that tell stories and evoke emotions.

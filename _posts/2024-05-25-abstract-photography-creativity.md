@@ -5,6 +5,13 @@ date: 2024-05-25
 categories: [photos]
 tags: [abstract-photography, creativity, artistic-photography, composition]
 excerpt: "Discover the art of abstract photography and learn techniques for creating compelling images that focus on form, color, and emotion rather than literal representation."
+featured_image:
+  url: /assets/images/posts/tuscany_3.jpg
+  alt: "Abstract patterns in natural landscape"
+  caption: "Creative abstract composition using natural elements"
+  width: 3024
+  height: 4032
+  file_size: 3854651
 ---
 
 Abstract photography is one of the most creative and expressive forms of photography. It's about seeing beyond the obvious, finding beauty in patterns, textures, and forms, and creating images that evoke emotions and thoughts rather than simply documenting reality. Abstract photography challenges us to look at the world differently and find art in unexpected places.

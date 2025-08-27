@@ -9,7 +9,7 @@
                 {% if post.categories.size > 0 %}
                     • 
                     {% for category in post.categories %}
-                        <a href="/category/{{ category }}/">{{ category }}</a>{% unless forloop.last %}, {% endunless %}
+                        <a href="/category/{{ category }}/" class="category-link">{{ category }}</a>
                     {% endfor %}
                 {% endif %}
             </div>

@@ -5,6 +5,13 @@ date: 2024-04-10
 categories: [photos]
 tags: [portrait-photography, people, lighting, composition]
 excerpt: "Essential techniques for creating compelling portraits that capture personality, emotion, and the true essence of your subjects."
+featured_image:
+  url: /assets/images/posts/tuscany_4.jpg
+  alt: "Professional portrait photography example"
+  caption: "Natural lighting portrait demonstrating proper technique"
+  width: 4032
+  height: 3024
+  file_size: 4714913
 ---
 
 Portrait photography is one of the most intimate and rewarding forms of photography. It's about more than just taking pictures of people—it's about capturing their personality, emotions, and the essence of who they are. Whether you're photographing friends, family, clients, or strangers, mastering portrait photography opens up a world of creative possibilities.

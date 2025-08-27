@@ -190,9 +190,10 @@ a {
   @include link-style;
 }
 
-// Post content links
+// Post content links and category links
 .post-content a,
-.post-excerpt a {
+.post-excerpt a,
+.post-meta a {
   position: relative;
   
   &::after {
@@ -310,6 +311,18 @@ a {
     color: $muted-color;
     font-size: 0.9rem;
     margin-bottom: $spacing-xs;
+    
+    a {
+      @include link-style;
+    }
+    
+    .category-link {
+      margin-right: 0.75rem;
+      
+      &:last-child {
+        margin-right: 0;
+      }
+    }
   }
   
   .post-excerpt {
@@ -360,6 +373,14 @@ a {
       
       a {
         @include link-style;
+      }
+      
+      .category-link {
+        margin-right: $spacing-xs;
+        
+        &:last-child {
+          margin-right: 0;
+        }
       }
     }
     
@@ -492,6 +513,21 @@ a {
       font-size: 1rem;
       margin: 0;
     }
+    
+    .rss-feed {
+      margin-top: $spacing-sm;
+      font-size: 0.9rem;
+      
+      a {
+        @include link-style;
+        opacity: 0.8;
+        transition: opacity 0.2s ease;
+        
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
   }
   
   @include responsive(tablet) {
@@ -598,10 +634,29 @@ a {
 
 .all-posts-link {
   margin-top: $spacing-xl;
-  text-align: center;
   
   .all-posts-button {
-    @include button-style;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: $spacing-sm $spacing-lg;
+    border: 1px solid $border-color;
+    border-radius: 4px;
+    text-decoration: none;
+    color: $text-color;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    
+    &:hover {
+      border-color: $link-color;
+      background-color: rgba(168, 213, 186, 0.1);
+    }
+    
+    // Remove the arrow from ::after since we have it in the text
+    &::after {
+      content: none !important;
+    }
   }
 }
 
@@ -615,14 +670,20 @@ a {
   border-top: 1px solid $border-color;
   
   .footer-content {
+    @include flex-column;
+    gap: $spacing-xs;
+  }
+  
+  .footer-top {
     @include flex-between;
     flex-wrap: wrap;
-    gap: $spacing-sm;
+    gap: $spacing-xs;
+    align-items: center;
   }
   
   .social-links {
     display: flex;
-    gap: $spacing-md;
+    gap: $spacing-sm;
     
     a {
       @include link-style;
@@ -630,16 +691,52 @@ a {
     }
   }
   
+  .rss-links {
+    display: flex;
+    align-items: center;
+    font-size: 0.85rem;
+    
+    .rss-label {
+      color: $muted-color;
+      margin-right: 0.25rem;
+    }
+    
+    .rss-separator {
+      color: $muted-color;
+      opacity: 0.6;
+      margin: 0 0.2rem;
+      font-size: 0.8rem;
+    }
+    
+    a {
+      @include link-style;
+      padding: 0.1rem 0.3rem;
+      border-radius: 3px;
+      transition: all 0.2s ease;
+      
+      &:hover {
+        background-color: rgba(168, 213, 186, 0.1);
+      }
+    }
+  }
+  
   .footer-text {
     color: $muted-color;
     font-size: 0.9rem;
+    text-align: center;
+    margin-top: $spacing-xs;
   }
   
   @include responsive(tablet) {
-    .footer-content {
+    .footer-top {
       flex-direction: column;
       text-align: center;
-      gap: $spacing-md;
+      gap: $spacing-sm;
+    }
+    
+    .rss-links {
+      flex-wrap: wrap;
+      justify-content: center;
     }
   }
 }

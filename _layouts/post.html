@@ -10,7 +10,7 @@ layout: default
             {% if page.categories.size > 0 %}
                 • 
                 {% for category in page.categories %}
-                    <a href="/category/{{ category }}/">{{ category }}</a>{% unless forloop.last %}, {% endunless %}
+                    <a href="/category/{{ category }}/" class="category-link">{{ category }}</a>
                 {% endfor %}
             {% endif %}
         </div>

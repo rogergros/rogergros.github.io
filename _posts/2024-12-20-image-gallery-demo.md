@@ -2,33 +2,51 @@
 layout: post
 title: "My trip to the tuscany: Golden sunsets, food and precious towns"
 date: 2024-12-20 12:00:00 +0000
-categories: photos
+categories: photos personal
 featured_image:
   url: /assets/images/posts/tuscany_4.jpg
   alt: "Golden fields with a line of trees"
   caption: "Sunsets in the tuscany are really beautiful"
   orientation: vertical
+  width: 1280
+  height: 1920
+  file_size: 4714913
 images:
   - url: /assets/images/posts/tuscany_2.jpg
     alt: "Urban street photography"
     caption: "Street life captured in black and white"
     orientation: vertical
+    width: 1280
+    height: 1920
+    file_size: 5991234
   - url: /assets/images/posts/tuscany_1.jpg
     alt: "Beautiful landscape photography"
     caption: "A stunning mountain landscape at golden hour"
     orientation: horizontal
+    width: 1920
+    height: 1280
+    file_size: 3092403
   - url: /assets/images/posts/tuscany_3.jpg
     alt: "Macro photography example"
     caption: "Close-up details of natural textures"
     orientation: horizontal
+    width: 1920
+    height: 1280
+    file_size: 3854651
   - url: /assets/images/posts/tuscany_4.jpg
     alt: "Portrait photography"
     caption: "Professional portrait with natural lighting"
     orientation: vertical
+    width: 1280
+    height: 1920
+    file_size: 4714913
   - url: /assets/images/posts/cinque_terre_1.jpg
     alt: "Portrait photography"
     caption: "Professional portrait with natural lighting"
     orientation: vertical
+    width: 1280
+    height: 1920
+    file_size: 7210488
 ---
 
 This post demonstrates the new adaptive image gallery functionality with high-resolution photos and zoom capabilities. The gallery automatically adjusts to different image orientations and creates a beautiful masonry-style layout.

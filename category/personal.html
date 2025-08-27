@@ -8,7 +8,10 @@ permalink: /category/personal/
     <header class="posts-header">
         <h1 class="posts-title">All Personal Posts</h1>
         {% assign all_posts = site.posts | where_exp: "post", "post.categories contains 'personal'" | sort: 'date' | reverse %}
-        <p class="posts-count">{{ all_posts.size }} post{% if all_posts.size != 1 %}s{% endif %}</p>
+        <p class="posts-count">
+            {{ all_posts.size }} post{% if all_posts.size != 1 %}s{% endif %} • 
+            <a href="{{ site.baseurl }}/feed-personal.xml" title="Subscribe to Personal posts RSS feed">RSS Feed</a>
+        </p>
     </header>
 
     {% if all_posts.size > 0 %}

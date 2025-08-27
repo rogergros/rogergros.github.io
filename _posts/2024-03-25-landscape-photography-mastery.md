@@ -5,6 +5,13 @@ date: 2024-03-25
 categories: [photos]
 tags: [landscape-photography, nature, composition, outdoor-photography]
 excerpt: "Master the art of landscape photography with essential techniques for capturing stunning natural scenes and breathtaking vistas."
+featured_image:
+  url: /assets/images/posts/tuscany_1.jpg
+  alt: "Breathtaking landscape vista"
+  caption: "Capturing nature's grandeur through landscape photography"
+  width: 4032
+  height: 3024
+  file_size: 3092403
 ---
 
 Landscape photography is one of the most rewarding and challenging genres of photography. It's about capturing the beauty and grandeur of the natural world, from sweeping mountain vistas to intimate forest scenes. While the subject matter is inherently beautiful, creating compelling landscape images requires technical skill, artistic vision, and a deep understanding of natural light and composition.
