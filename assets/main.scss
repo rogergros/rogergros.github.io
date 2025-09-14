@@ -63,7 +63,7 @@ $desktop: 1200px;
 
 @mixin hover-lift {
   transition: transform 0.2s ease;
-  
+
   &:hover {
     transform: translateY(-2px);
   }
@@ -71,7 +71,7 @@ $desktop: 1200px;
 
 @mixin hover-scale($scale: 1.02) {
   transition: transform 0.2s ease;
-  
+
   &:hover {
     transform: scale($scale);
   }
@@ -81,7 +81,7 @@ $desktop: 1200px;
   color: $link-color;
   text-decoration: none;
   transition: color 0.2s ease;
-  
+
   &:hover {
     color: $link-hover-color;
   }
@@ -96,7 +96,7 @@ $desktop: 1200px;
   font-weight: 600;
   text-decoration: none;
   transition: all 0.2s ease;
-  
+
   &:hover {
     background-color: $link-hover-color;
     @include hover-lift;
@@ -149,11 +149,11 @@ body {
   max-width: $max-width;
   margin: 0 auto;
   padding: $spacing-lg;
-  
+
   @include responsive(tablet) {
     padding: $spacing-sm;
   }
-  
+
   @include responsive(mobile) {
     padding: $spacing-xs * 1.5;
   }
@@ -195,13 +195,13 @@ a {
 .post-excerpt a,
 .post-meta a {
   position: relative;
-  
+
   &::after {
     content: " ↗";
     opacity: 0.7;
     transition: opacity 0.2s ease;
   }
-  
+
   &:hover::after {
     opacity: 1;
   }
@@ -213,27 +213,27 @@ a {
 
 .nav {
   @include section-header;
-  
+
   .nav-links {
     list-style: none;
     padding: 0;
     margin: 0;
     @include flex-between;
     flex-wrap: wrap;
-    
+
     li {
       margin: 0;
-      
+
       &:first-child {
         margin-right: auto;
       }
-      
+
       &:not(:first-child) {
         margin-left: $spacing-lg;
       }
     }
   }
-  
+
   @include responsive(tablet) {
     .nav-links {
       flex-direction: column;
@@ -251,24 +251,24 @@ a {
   list-style: none;
   padding: 0;
   margin: 0;
-  
+
   .post-item {
     @include flex-column;
     gap: $spacing-sm;
     margin-bottom: $spacing-xl;
     padding-bottom: $spacing-lg;
     @include border-bottom;
-    
+
     &:last-child {
       border-bottom: none;
     }
-    
+
     .post-content-row {
       display: flex;
       gap: $spacing-lg;
       align-items: flex-start;
     }
-    
+
     .post-featured-image {
       flex-shrink: 0;
       width: 30%;
@@ -277,7 +277,7 @@ a {
       overflow: hidden;
       border-radius: $border-radius;
       order: 2;
-      
+
       .post-thumbnail {
         width: 100%;
         height: 100%;
@@ -286,71 +286,71 @@ a {
         @include hover-scale(1.05);
       }
     }
-    
+
     .post-content {
       flex: 1;
       min-width: 0;
       order: 1;
     }
   }
-  
+
   .post-title {
     font-size: 1.5rem;
     margin-bottom: $spacing-xs;
-    
+
     a {
       color: $text-color;
-      
+
       &:hover {
         color: $link-color;
       }
     }
   }
-  
+
   .post-meta {
     color: $muted-color;
     font-size: 0.9rem;
     margin-bottom: $spacing-xs;
-    
+
     a {
       @include link-style;
     }
-    
+
     .category-link {
       margin-right: 0.75rem;
-      
+
       &:last-child {
         margin-right: 0;
       }
     }
   }
-  
+
   .post-excerpt {
     color: #cccccc;
     line-height: $line-height;
-    
+
     p:first-child {
       margin-top: 0;
     }
-    
+
     p {
       margin-bottom: 16px;
     }
   }
-  
+
   @include responsive(tablet) {
     .post-item {
       .post-content-row {
         flex-direction: column;
         gap: $spacing-sm;
       }
-      
+
       .post-featured-image {
         width: 100%;
         height: 300px;
       }
     }
-    
+
     .post-title {
       font-size: 1.25rem;
     }
@@ -361,32 +361,32 @@ a {
 .post {
   .post-header {
     margin-bottom: $spacing-xl;
-    
+
     .post-title {
       font-size: 2.5rem;
       margin-bottom: $spacing-sm;
     }
-    
+
     .post-meta {
       color: $muted-color;
       font-size: 1rem;
-      
+
       a {
         @include link-style;
       }
-      
+
       .category-link {
         margin-right: $spacing-xs;
-        
+
         &:last-child {
           margin-right: 0;
         }
       }
     }
-    
+
     .post-featured-image {
       margin: $spacing-lg 0;
-      
+
       .featured-image {
         width: 100%;
         height: auto;
@@ -396,25 +396,25 @@ a {
       }
     }
   }
-  
+
   .post-content {
     font-size: 1.3rem;
     line-height: 1.7;
-    
+
     h1, h2, h3, h4, h5, h6 {
       margin-top: $spacing-lg;
       margin-bottom: $spacing-sm;
     }
-    
+
     p {
       margin-bottom: $spacing-md;
     }
-    
+
     ul, ol {
       margin-bottom: $spacing-md;
       padding-left: $spacing-lg;
     }
-    
+
     blockquote {
       border-left: 4px solid $link-color;
       padding-left: $spacing-sm;
@@ -422,34 +422,34 @@ a {
       font-style: italic;
       color: #cccccc;
     }
-    
+
     code {
       background-color: $code-bg;
       padding: 0.2rem 0.4rem;
       border-radius: 3px;
       font-size: 0.9em;
     }
-    
+
     pre {
       background-color: $code-bg;
       padding: $spacing-sm;
       border-radius: 4px;
       overflow-x: auto;
       margin: $spacing-lg 0;
-      
+
       code {
         background-color: transparent;
         padding: 0;
       }
     }
   }
-  
+
   @include responsive(tablet) {
     .post-header .post-title {
       font-size: 2rem;
     }
   }
-  
+
   @include responsive(mobile) {
     .post-header .post-title {
       font-size: 1.75rem;
@@ -464,26 +464,26 @@ a {
 .page {
   .page-header {
     margin-bottom: $spacing-xl;
-    
+
     .page-title {
       font-size: 2.5rem;
       margin-bottom: $spacing-sm;
     }
   }
-  
+
   .page-content {
     font-size: 1.1rem;
     line-height: 1.7;
-    
+
     h1, h2, h3, h4, h5, h6 {
       margin-top: $spacing-lg;
       margin-bottom: $spacing-sm;
     }
-    
+
     p {
       margin-bottom: $spacing-md;
     }
-    
+
     ul, ol {
       margin-bottom: $spacing-md;
       padding-left: $spacing-lg;
@@ -500,40 +500,468 @@ a {
   .category-header,
   .posts-header {
     @include section-header;
-    
+
     .category-title,
     .posts-title {
       font-size: 2.5rem;
       margin-bottom: $spacing-xs;
     }
-    
+
     .category-count,
     .posts-count {
       color: $muted-color;
       font-size: 1rem;
       margin: 0;
     }
-    
+
     .rss-feed {
       margin-top: $spacing-sm;
       font-size: 0.9rem;
-      
+
       a {
         @include link-style;
         opacity: 0.8;
         transition: opacity 0.2s ease;
-        
+
         &:hover {
           opacity: 1;
         }
       }
     }
   }
-  
+
   @include responsive(tablet) {
     .category-header .category-title,
     .posts-header .posts-title {
       font-size: 2rem;
+    }
+  }
+}
+
+// =============================================================================
+// ARCHIVE LAYOUT
+// =============================================================================
+
+.archive {
+  .archive-header {
+    @include section-header;
+
+    .archive-title {
+      font-size: 2.5rem;
+      margin-bottom: $spacing-xs;
+    }
+
+    .archive-count {
+      color: $muted-color;
+      font-size: 1rem;
+      margin: 0;
+    }
+  }
+
+  .archive-year {
+    margin-bottom: $spacing-xxl;
+
+    .archive-year-title {
+      font-size: 2rem;
+      margin-bottom: $spacing-lg;
+      color: $link-color;
+      font-weight: 700;
+      @include border-bottom;
+      padding-bottom: $spacing-xs;
+    }
+  }
+
+  .archive-month {
+    margin-bottom: $spacing-xl;
+
+    .archive-month-title {
+      font-size: 1.25rem;
+      margin-bottom: $spacing-md;
+      color: $text-color;
+      font-weight: 600;
+      opacity: 0.9;
+    }
+  }
+
+  .archive-post-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    .archive-post-item {
+      margin-bottom: $spacing-sm;
+
+      .archive-post-link {
+        display: flex;
+        align-items: center;
+        gap: $spacing-md;
+        padding: $spacing-sm;
+        transition: all 0.2s ease;
+        border-radius: 6px;
+        text-decoration: none;
+        color: inherit;
+        border: 1px solid transparent;
+
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.03);
+          border-color: rgba(168, 213, 186, 0.3);
+          transform: translateX(2px);
+
+          .archive-post-date {
+            background-color: rgba(168, 213, 186, 0.15);
+            border-color: $link-color;
+          }
+
+          .archive-post-arrow {
+            opacity: 1;
+            transform: translateX(2px);
+          }
+        }
+      }
+
+      .archive-post-date {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-width: 3rem;
+        height: 3rem;
+        background-color: rgba(255, 255, 255, 0.05);
+        border: 1px solid $border-color;
+        border-radius: 6px;
+        transition: all 0.2s ease;
+        flex-shrink: 0;
+
+        .day-number {
+          font-size: 1rem;
+          font-weight: 700;
+          color: $text-color;
+          line-height: 1;
+        }
+
+        .day-label {
+          font-size: 0.7rem;
+          color: $muted-color;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+          line-height: 1;
+          margin-top: 1px;
+        }
+      }
+
+      .archive-post-content {
+        flex: 1;
+        min-width: 0;
+
+        .archive-post-title {
+          margin: 0 0 $spacing-xs * 0.5 0;
+          font-size: 1rem;
+          font-weight: 500;
+          line-height: $line-height-tight;
+          color: $text-color;
+        }
+
+        .archive-post-meta {
+          .category-tag {
+            font-size: 0.85rem;
+            color: $link-color;
+            margin-right: $spacing-xs;
+            opacity: 0.8;
+
+            &:last-child {
+              margin-right: 0;
+            }
+          }
+        }
+      }
+
+      .archive-post-arrow {
+        color: $muted-color;
+        font-size: 1.2rem;
+        opacity: 0.5;
+        transition: all 0.2s ease;
+        flex-shrink: 0;
+        margin-left: $spacing-xs;
+      }
+
+      .archive-post-photos {
+        display: flex;
+        align-items: center;
+        position: relative;
+        width: 3rem;
+        height: 2rem;
+        margin-right: $spacing-xs;
+        flex-shrink: 0;
+
+        .photo-card {
+          position: absolute;
+          width: 1.8rem;
+          height: 1.8rem;
+          border-radius: 3px;
+          overflow: hidden;
+          background-color: $code-bg;
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+          transform: rotate(0deg);
+          top: 0.1rem;
+          left: 0.6rem;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            opacity: 0.9;
+          }
+        }
+
+        // Single card - centered, no rotation
+        &:has(.photo-card:nth-child(1):last-child) {
+          .photo-card:nth-child(1) {
+            transform: rotate(0deg);
+            top: 0.1rem;
+            left: 0.6rem;
+          }
+        }
+
+        // Two cards - moderate tilt
+        &:has(.photo-card:nth-child(2):last-child) {
+          .photo-card:nth-child(1) {
+            transform: rotate(12deg) translateX(0.3rem);
+            top: -0.1rem;
+          }
+
+          .photo-card:nth-child(2) {
+            transform: rotate(-8deg);
+            top: 0.2rem;
+          }
+        }
+
+        // Three cards - full tilt effect
+        &:has(.photo-card:nth-child(3)) {
+          .photo-card:nth-child(1) {
+            transform: rotate(18deg) translateX(0.4rem);
+            top: -0.2rem;
+          }
+
+          .photo-card:nth-child(2) {
+            transform: rotate(9deg) translateX(0.2rem);
+            top: 0.05rem;
+          }
+
+          .photo-card:nth-child(3) {
+            transform: rotate(-6deg);
+            top: 0.15rem;
+          }
+        }
+      }
+    }
+  }
+
+  @include responsive(tablet) {
+    .archive-header .archive-title {
+      font-size: 2rem;
+    }
+
+    .archive-year .archive-year-title {
+      font-size: 1.75rem;
+    }
+
+    .archive-month .archive-month-title {
+      font-size: 1.1rem;
+    }
+
+    .archive-post-list .archive-post-item .archive-post-link {
+      gap: $spacing-sm;
+
+      .archive-post-date {
+        min-width: 2.5rem;
+        height: 2.5rem;
+
+        .day-number {
+          font-size: 0.9rem;
+        }
+
+        .day-label {
+          font-size: 0.65rem;
+        }
+      }
+
+      .archive-post-content .archive-post-title {
+        font-size: 0.95rem;
+      }
+
+      .archive-post-arrow {
+        font-size: 1.1rem;
+      }
+
+      .archive-post-photos {
+        width: 2.6rem;
+        height: 1.8rem;
+
+        .photo-card {
+          width: 1.6rem;
+          height: 1.6rem;
+          transform: rotate(0deg);
+          top: 0.1rem;
+          left: 0.5rem;
+        }
+
+        // Single card - centered, no rotation
+        &:has(.photo-card:nth-child(1):last-child) {
+          .photo-card:nth-child(1) {
+            transform: rotate(0deg);
+            top: 0.1rem;
+            left: 0.5rem;
+          }
+        }
+
+        // Two cards - moderate tilt
+        &:has(.photo-card:nth-child(2):last-child) {
+          .photo-card:nth-child(1) {
+            transform: rotate(12deg) translateX(0.25rem);
+            top: -0.05rem;
+          }
+
+          .photo-card:nth-child(2) {
+            transform: rotate(-8deg);
+            top: 0.15rem;
+          }
+        }
+
+        // Three cards - full tilt effect
+        &:has(.photo-card:nth-child(3)) {
+          .photo-card:nth-child(1) {
+            transform: rotate(18deg) translateX(0.32rem);
+            top: -0.1rem;
+          }
+
+          .photo-card:nth-child(2) {
+            transform: rotate(9deg) translateX(0.16rem);
+            top: 0.04rem;
+          }
+
+          .photo-card:nth-child(3) {
+            transform: rotate(-6deg);
+            top: 0.12rem;
+          }
+        }
+      }
+    }
+  }
+
+  @include responsive(mobile) {
+    .archive-header .archive-title {
+      font-size: 1.75rem;
+    }
+
+    .archive-year .archive-year-title {
+      font-size: 1.5rem;
+    }
+
+    .archive-month .archive-month-title {
+      font-size: 1rem;
+    }
+
+    .archive-post-list .archive-post-item .archive-post-link {
+      flex-direction: column;
+      gap: $spacing-xs * 0.5;
+      align-items: flex-start;
+      position: relative;
+
+      .archive-post-date {
+        min-width: auto;
+        width: 2rem;
+        height: 2rem;
+        order: 2;
+
+        .day-number {
+          font-size: 0.8rem;
+        }
+
+        .day-label {
+          font-size: 0.6rem;
+        }
+      }
+
+      .archive-post-content {
+        order: 1;
+        width: 100%;
+
+        .archive-post-title {
+          font-size: 0.9rem;
+          margin-bottom: $spacing-xs * 0.25;
+        }
+      }
+
+      .archive-post-arrow {
+        position: absolute;
+        top: $spacing-sm;
+        right: $spacing-sm;
+        order: 3;
+        font-size: 1rem;
+      }
+
+      &:hover {
+        .archive-post-arrow {
+          transform: translateX(2px);
+        }
+      }
+
+      .archive-post-photos {
+        width: 2.2rem;
+        height: 1.4rem;
+        margin-right: $spacing-xs * 0.5;
+
+        .photo-card {
+          width: 1.3rem;
+          height: 1.3rem;
+          border-radius: 2px;
+          transform: rotate(0deg);
+          top: 0.05rem;
+          left: 0.45rem;
+        }
+
+        // Single card - centered, no rotation
+        &:has(.photo-card:nth-child(1):last-child) {
+          .photo-card:nth-child(1) {
+            transform: rotate(0deg);
+            top: 0.05rem;
+            left: 0.45rem;
+          }
+        }
+
+        // Two cards - moderate tilt
+        &:has(.photo-card:nth-child(2):last-child) {
+          .photo-card:nth-child(1) {
+            transform: rotate(15deg) translateX(0.15rem);
+            top: -0.02rem;
+          }
+
+          .photo-card:nth-child(2) {
+            transform: rotate(-10deg);
+            top: 0.1rem;
+          }
+        }
+
+        // Three cards - full tilt effect
+        &:has(.photo-card:nth-child(3)) {
+          .photo-card:nth-child(1) {
+            transform: rotate(20deg) translateX(0.2rem);
+            top: -0.05rem;
+          }
+
+          .photo-card:nth-child(2) {
+            transform: rotate(10deg) translateX(0.1rem);
+            top: 0.05rem;
+          }
+
+          .photo-card:nth-child(3) {
+            transform: rotate(-8deg);
+            top: 0.1rem;
+          }
+        }
+      }
     }
   }
 }
@@ -545,13 +973,13 @@ a {
 .pagination {
   margin-top: $spacing-xl;
   padding-top: $spacing-lg;
-  
+
   .pagination-wrapper {
     @include flex-center;
     gap: $spacing-sm;
     flex-wrap: wrap;
   }
-  
+
   .pagination-prev,
   .pagination-next {
     padding: $spacing-xs $spacing-sm;
@@ -560,24 +988,24 @@ a {
     text-decoration: none;
     color: $text-color;
     transition: all 0.2s ease;
-    
+
     &:hover:not(.disabled) {
       border-color: $link-color;
       background-color: rgba(168, 213, 186, 0.1);
     }
-    
+
     &.disabled {
       color: $muted-color;
       cursor: not-allowed;
       opacity: 0.5;
     }
   }
-  
+
   .pagination-pages {
     display: flex;
     gap: $spacing-xs;
     align-items: center;
-    
+
     .pagination-link,
     .pagination-current {
       display: inline-block;
@@ -590,16 +1018,16 @@ a {
       text-decoration: none;
       transition: all 0.2s ease;
     }
-    
+
     .pagination-link {
       color: $text-color;
-      
+
       &:hover {
         border-color: $link-color;
         background-color: rgba(168, 213, 186, 0.1);
       }
     }
-    
+
     .pagination-current {
       background-color: $link-color;
       color: $background-color;
@@ -607,21 +1035,21 @@ a {
       font-weight: 600;
     }
   }
-  
+
   @include responsive(tablet) {
     .pagination-wrapper {
       flex-direction: column;
       gap: $spacing-sm;
     }
-    
+
     .pagination-pages {
       order: 2;
     }
-    
+
     .pagination-prev {
       order: 1;
     }
-    
+
     .pagination-next {
       order: 3;
     }
@@ -634,7 +1062,7 @@ a {
 
 .all-posts-link {
   margin-top: $spacing-xl;
-  
+
   .all-posts-button {
     display: flex;
     align-items: center;
@@ -647,12 +1075,12 @@ a {
     color: $text-color;
     font-weight: 500;
     transition: all 0.2s ease;
-    
+
     &:hover {
       border-color: $link-color;
       background-color: rgba(168, 213, 186, 0.1);
     }
-    
+
     // Remove the arrow from ::after since we have it in the text
     &::after {
       content: none !important;
@@ -668,72 +1096,72 @@ a {
   margin-top: $spacing-xxl;
   padding-top: $spacing-lg;
   border-top: 1px solid $border-color;
-  
+
   .footer-content {
     @include flex-column;
     gap: $spacing-xs;
   }
-  
+
   .footer-top {
     @include flex-between;
     flex-wrap: wrap;
     gap: $spacing-xs;
     align-items: center;
   }
-  
+
   .social-links {
     display: flex;
     gap: $spacing-sm;
-    
+
     a {
       @include link-style;
       font-weight: 500;
     }
   }
-  
+
   .rss-links {
     display: flex;
     align-items: center;
     font-size: 0.85rem;
-    
+
     .rss-label {
       color: $muted-color;
       margin-right: 0.25rem;
     }
-    
+
     .rss-separator {
       color: $muted-color;
       opacity: 0.6;
       margin: 0 0.2rem;
       font-size: 0.8rem;
     }
-    
+
     a {
       @include link-style;
       padding: 0.1rem 0.3rem;
       border-radius: 3px;
       transition: all 0.2s ease;
-      
+
       &:hover {
         background-color: rgba(168, 213, 186, 0.1);
       }
     }
   }
-  
+
   .footer-text {
     color: $muted-color;
     font-size: 0.9rem;
     text-align: center;
     margin-top: $spacing-xs;
   }
-  
+
   @include responsive(tablet) {
     .footer-top {
       flex-direction: column;
       text-align: center;
       gap: $spacing-sm;
     }
-    
+
     .rss-links {
       flex-wrap: wrap;
       justify-content: center;
@@ -753,7 +1181,7 @@ a {
   overflow: hidden;
   border-radius: $border-radius-lg;
   @include hover-scale;
-  
+
   .featured-image {
     width: 100%;
     height: auto;
@@ -764,15 +1192,15 @@ a {
     cursor: pointer;
     display: block;
   }
-  
+
   &:hover {
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-    
+
     .featured-image {
       transform: scale(1.05);
     }
   }
-  
+
   .image-caption {
     position: absolute;
     bottom: 0;
@@ -785,7 +1213,7 @@ a {
     transform: translateY(100%);
     transition: transform 0.3s ease;
   }
-  
+
   &:hover .image-caption {
     transform: translateY(0);
   }
@@ -795,20 +1223,20 @@ a {
 .post-gallery {
   margin: $spacing-xl 0;
   width: 100%; // Ensure gallery matches container width
-  
+
   h3 {
     margin-bottom: $spacing-lg;
     font-size: 1.5rem;
     color: $text-color;
   }
-  
+
   .image-gallery {
     // Masonry layout using CSS columns
     column-count: 2;
     column-gap: $spacing-md;
     column-fill: balance;
     width: 100%; // Match post content width
-    
+
     .gallery-item {
       position: relative;
       border-radius: $border-radius;
@@ -816,14 +1244,14 @@ a {
       background-color: $code-bg;
       cursor: zoom-in;
       @include hover-scale;
-      
+
       // Prevent breaking across columns
       break-inside: avoid;
       page-break-inside: avoid;
       display: inline-block;
       width: 100%;
       margin-bottom: $spacing-sm;
-      
+
       .gallery-image {
         width: 100%;
         height: auto;
@@ -831,15 +1259,15 @@ a {
         transition: transform 0.3s ease;
         border-radius: $border-radius;
       }
-      
+
       &:hover {
         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-        
+
         .gallery-image {
           transform: scale(1.02);
         }
       }
-      
+
       .image-caption {
         position: absolute;
         bottom: 0;
@@ -853,41 +1281,41 @@ a {
         transition: transform 0.3s ease;
         border-radius: 0 0 $border-radius $border-radius;
       }
-      
+
       &:hover .image-caption {
         transform: translateY(0);
       }
     }
   }
-  
+
   @include responsive(tablet) {
     .image-gallery {
       column-count: 2;
       column-gap: $spacing-sm;
-      
+
       .gallery-item {
         margin-bottom: $spacing-sm;
       }
     }
   }
-  
+
   @include responsive(mobile) {
     .image-gallery {
       column-count: 1;
       column-gap: 0;
-      
+
       .gallery-item {
         margin-bottom: $spacing-xs * 1.5;
         max-width: 100%;
       }
     }
   }
-  
+
   @include responsive(desktop) {
     .image-gallery {
       column-count: 2;
       column-gap: $spacing-lg;
-      
+
       .gallery-item {
         margin-bottom: $spacing-md;
       }
@@ -906,7 +1334,7 @@ a {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.9);
   backdrop-filter: blur(5px);
-  
+
   .modal-content {
     position: relative;
     margin: auto;
@@ -915,7 +1343,7 @@ a {
     height: 90%;
     @include flex-center;
     flex-direction: column;
-    
+
     .modal-close {
       position: absolute;
       top: 15px;
@@ -925,14 +1353,14 @@ a {
       font-weight: bold;
       cursor: pointer;
       z-index: 1001;
-      
+
       &:hover,
       &:focus {
         color: #bbb;
         text-decoration: none;
       }
     }
-    
+
     .modal-image {
       max-width: 100%;
       max-height: 80%;
@@ -940,7 +1368,7 @@ a {
       border-radius: $border-radius;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     }
-    
+
     .modal-caption {
       margin-top: $spacing-sm;
       color: white;
@@ -958,29 +1386,29 @@ a {
       box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
       opacity: 1;
       transition: opacity 0.3s ease;
-      
+
       &.fade-out {
         opacity: 0;
       }
     }
   }
-  
+
   @include responsive(tablet) {
     .modal-content {
       width: 95%;
       height: 95%;
       padding: 10px;
-      
+
       .modal-close {
         top: 10px;
         right: 20px;
         font-size: 30px;
       }
-      
+
       .modal-image {
         max-height: 70%;
       }
-      
+
       .modal-caption {
         font-size: 0.9rem;
         padding: $spacing-xs * 0.8 $spacing-xs * 1.5;
@@ -999,12 +1427,12 @@ a {
   margin-top: $spacing-xxl;
   padding-top: $spacing-lg;
   @include border-bottom;
-  
+
   .post-navigation-links {
     display: flex;
     justify-content: space-between;
     gap: $spacing-lg;
-    
+
     .post-navigation-link {
       flex: 1;
       @include flex-center;
@@ -1014,37 +1442,37 @@ a {
       transition: all 0.2s ease;
       text-decoration: none;
       color: $text-color;
-      
+
       &:hover {
         border-color: $link-color;
         background-color: rgba(168, 213, 186, 0.1);
       }
-      
+
       &.prev .post-navigation-arrow {
         margin-right: $spacing-sm;
         font-size: 1.2rem;
       }
-      
+
       &.next {
         text-align: right;
         justify-content: flex-end;
-        
+
         .post-navigation-arrow {
           margin-left: $spacing-sm;
           font-size: 1.2rem;
         }
       }
-      
+
       .post-navigation-text {
         @include flex-column;
-        
+
         .post-navigation-label {
           font-size: 0.8rem;
           color: $muted-color;
           text-transform: uppercase;
           letter-spacing: 0.5px;
         }
-        
+
         .post-navigation-title {
           font-size: 1rem;
           font-weight: 500;
@@ -1053,17 +1481,17 @@ a {
       }
     }
   }
-  
+
   @include responsive(tablet) {
     .post-navigation-links {
       flex-direction: column;
       gap: $spacing-sm;
-      
+
       .post-navigation-link {
         &.next {
           text-align: left;
           justify-content: flex-start;
-          
+
           .post-navigation-arrow {
             margin-left: 0;
             margin-right: $spacing-sm;
@@ -1088,7 +1516,7 @@ a {
   body {
     font-size: $font-size-small;
   }
-  
+
   h1 { font-size: 1.75rem; }
   h2 { font-size: 1.25rem; }
 }

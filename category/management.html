@@ -1,27 +1,28 @@
 ---
 layout: default
-title: "All Management Posts"
+title: "Management Posts"
 permalink: /category/management/
 ---
 
 <div class="posts">
     <header class="posts-header">
-        <h1 class="posts-title">All Management Posts</h1>
+        <h1 class="posts-title">Management Posts</h1>
         {% assign all_posts = site.posts | where_exp: "post", "post.categories contains 'management'" | sort: 'date' | reverse %}
         <p class="posts-count">
-            {{ all_posts.size }} post{% if all_posts.size != 1 %}s{% endif %} • 
+            Showing the latest 10 posts •
             <a href="{{ site.baseurl }}/feed-management.xml" title="Subscribe to Management posts RSS feed">RSS Feed</a>
         </p>
     </header>
 
-    {% if all_posts.size > 0 %}
     <ul class="post-list">
-        {% for post in all_posts %}
+        {% for post in all_posts limit: 10 %}
             {% include post-preview.html %}
         {% endfor %}
     </ul>
-    {% else %}
-    <p>No posts found in the Management category yet.</p>
-    <p>Posts with the "management" category will appear here.</p>
-    {% endif %}
+
+    <div class="all-posts-link">
+        <a href="{{ '/category/management/archive/' | relative_url }}" class="all-posts-button">
+            View All Management Posts Archive →
+        </a>
+    </div>
 </div>

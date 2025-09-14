@@ -1,0 +1,87 @@
+---
+layout: default
+---
+
+{% assign category_name = page.category %}
+{% assign category_posts = site.posts | where_exp: "post", "post.categories contains category_name" | sort: 'date' | reverse %}
+
+<div class="archive">
+    <header class="archive-header">
+        <h1 class="archive-title">{{ page.title }}</h1>
+        <p class="archive-count">
+            {{ category_posts.size }} posts in {{ category_name }} organized by date
+            • <a href="{{ page.feed_url | relative_url }}" title="Subscribe to {{ category_name }} posts RSS feed">RSS Feed</a>
+        </p>
+    </header>
+
+    {% assign posts_by_year = category_posts | group_by_exp: "post", "post.date | date: '%Y'" %}
+
+    {% for year_group in posts_by_year %}
+        <div class="archive-year">
+            <h2 class="archive-year-title">{{ year_group.name }}</h2>
+
+            {% assign posts_by_month = year_group.items | group_by_exp: "post", "post.date | date: '%B'" %}
+
+            {% for month_group in posts_by_month %}
+                <div class="archive-month">
+                    <h3 class="archive-month-title">{{ month_group.name }}</h3>
+
+                    <ul class="archive-post-list">
+                        {% for post in month_group.items %}
+                            <li class="archive-post-item">
+                                <a href="{{ post.url | relative_url }}" class="archive-post-link">
+                                    <div class="archive-post-date">
+                                        <span class="day-number">{{ post.date | date: "%-d" }}</span>
+                                        <span class="day-label">{{ post.date | date: "%a" }}</span>
+                                    </div>
+                                    <div class="archive-post-content">
+                                        <h4 class="archive-post-title">{{ post.title }}</h4>
+                                        {% if post.categories.size > 1 %}
+                                        <div class="archive-post-meta">
+                                            {% for category in post.categories %}
+                                                {% unless category == category_name %}
+                                                    <span class="category-tag">{{ category }}</span>
+                                                {% endunless %}
+                                            {% endfor %}
+                                        </div>
+                                        {% endif %}
+                                    </div>
+                                    {% if post.featured_image or post.images %}
+                                    <div class="archive-post-photos">
+                                        {% assign photo_count = 0 %}
+                                        {% if post.featured_image %}
+                                            {% assign photo_count = photo_count | plus: 1 %}
+                                            <div class="photo-card" style="z-index: 3;">
+                                                <img src="{{ post.featured_image.url | relative_url }}" alt="" loading="lazy">
+                                            </div>
+                                        {% endif %}
+                                        {% if post.images and photo_count < 3 %}
+                                            {% for image in post.images limit: 3 %}
+                                                {% unless post.featured_image and image.url == post.featured_image.url %}
+                                                    {% if photo_count < 3 %}
+                                                        {% assign photo_count = photo_count | plus: 1 %}
+                                                        <div class="photo-card" style="z-index: {{ 4 | minus: photo_count }};">
+                                                            <img src="{{ image.url | relative_url }}" alt="" loading="lazy">
+                                                        </div>
+                                                    {% endif %}
+                                                {% endunless %}
+                                            {% endfor %}
+                                        {% endif %}
+                                    </div>
+                                    {% endif %}
+                                    <div class="archive-post-arrow">→</div>
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endfor %}
+        </div>
+    {% endfor %}
+
+    <div class="archive-back-link" style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #333;">
+        <a href="{{ page.category_url | relative_url }}" style="color: #a8d5ba; text-decoration: none;">
+            ← Back to {{ category_name | capitalize }} Posts
+        </a>
+    </div>
+</div>

@@ -1,27 +1,28 @@
 ---
 layout: default
-title: "All Photography Posts"
+title: "Photography Posts"
 permalink: /category/photos/
 ---
 
 <div class="posts">
     <header class="posts-header">
-        <h1 class="posts-title">All Photography Posts</h1>
+        <h1 class="posts-title">Photography Posts</h1>
         {% assign all_posts = site.posts | where_exp: "post", "post.categories contains 'photos'" | sort: 'date' | reverse %}
         <p class="posts-count">
-            {{ all_posts.size }} post{% if all_posts.size != 1 %}s{% endif %} • 
+            Showing the latest 10 posts •
             <a href="{{ site.baseurl }}/feed-photos.xml" title="Subscribe to Photography posts RSS feed - Instagram-style visual feed">RSS Feed</a>
         </p>
     </header>
 
-    {% if all_posts.size > 0 %}
     <ul class="post-list">
-        {% for post in all_posts %}
+        {% for post in all_posts limit: 10 %}
             {% include post-preview.html %}
         {% endfor %}
     </ul>
-    {% else %}
-    <p>No posts found in the Photography category yet.</p>
-    <p>Posts with the "photos" category will appear here.</p>
-    {% endif %}
+
+    <div class="all-posts-link">
+        <a href="{{ '/category/photos/archive/' | relative_url }}" class="all-posts-button">
+            View All Photography Posts Archive →
+        </a>
+    </div>
 </div>

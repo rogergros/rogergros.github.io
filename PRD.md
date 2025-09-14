@@ -26,7 +26,7 @@ A simple personal Jekyll-powered blog featuring content on management, photograp
 ### Content Management
 - **Blog Posts:** Markdown-based posts with YAML frontmatter
 - **Categories:** Management, Personal and Photos with dedicated feeds
-- **Pagination:** 10 posts per page with navigation
+- **Blogposts listing:** 10 posts on the main page and a page with all the archive (All posts or specific categories)
 - **SEO:** Meta tags, structured data, RSS feeds
 
 ### Design & UX
