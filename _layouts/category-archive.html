@@ -79,8 +79,8 @@ layout: default
         </div>
     {% endfor %}
 
-    <div class="archive-back-link" style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #333;">
-        <a href="{{ page.category_url | relative_url }}" style="color: #a8d5ba; text-decoration: none;">
+    <div class="archive-back-link">
+        <a href="{{ page.category_url | relative_url }}" class="back-link">
             ← Back to {{ category_name | capitalize }} Posts
         </a>
     </div>
