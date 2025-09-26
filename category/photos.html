@@ -1,17 +1,19 @@
 ---
 layout: default
-title: "Photography Posts"
+title: "Photography"
 permalink: /category/photos/
 ---
 
 <div class="posts">
     <header class="posts-header">
-        <h1 class="posts-title">Photography Posts</h1>
         {% assign all_posts = site.posts | where_exp: "post", "post.categories contains 'photos'" | sort: 'date' | reverse %}
-        <p class="posts-count">
-            Showing the latest 10 posts •
-            <a href="{{ site.baseurl }}/feed-photos.xml" title="Subscribe to Photography posts RSS feed - Instagram-style visual feed">RSS Feed</a>
-        </p>
+        <h1 class="posts-title-inline">
+            Photography
+            <span class="posts-meta">
+                10 latest posts
+                • <a href="{{ site.baseurl }}/feed-photos.xml" title="Subscribe to Photography posts RSS feed - Instagram-style visual feed">RSS Feed</a>
+            </span>
+        </h1>
     </header>
 
     <ul class="post-list">

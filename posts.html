@@ -1,16 +1,18 @@
 ---
 layout: default
-title: "All Posts"
+title: "All posts"
 permalink: /posts/
 ---
 
 <div class="posts">
     <header class="posts-header">
-        <h1 class="posts-title">All Posts</h1>
-        <p class="posts-count">
-            Showing the latest 10 posts
-            • <a href="{{ site.baseurl }}/feed.xml" title="Subscribe to all posts RSS feed">RSS Feed</a>
-        </p>
+        <h1 class="posts-title-inline">
+            All posts
+            <span class="posts-meta">
+                10 latest posts
+                • <a href="{{ site.baseurl }}/feed.xml" title="Subscribe to all posts RSS feed">RSS Feed</a>
+            </span>
+        </h1>
     </header>
 
     <ul class="post-list">
@@ -21,7 +23,7 @@ permalink: /posts/
 
     <div class="all-posts-link">
         <a href="{{ '/archive/' | relative_url }}" class="all-posts-button">
-            View All Posts Archive →
+            View All posts Archive →
         </a>
     </div>
 </div>
