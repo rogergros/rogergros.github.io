@@ -103,15 +103,6 @@ $desktop: 1200px;
   }
 }
 
-@mixin border-bottom {
-  border-bottom: 1px solid $border-color;
-}
-
-@mixin section-header {
-  margin-bottom: $spacing-xl;
-  padding-bottom: $spacing-sm;
-  @include border-bottom;
-}
 
 @mixin responsive($breakpoint) {
   @if $breakpoint == mobile {
@@ -212,7 +203,8 @@ a {
 // =============================================================================
 
 .nav {
-  @include section-header;
+  margin-bottom: $spacing-lg;
+  padding-bottom: $spacing-sm;
 
   .nav-links {
     list-style: none;
@@ -254,14 +246,9 @@ a {
 
   .post-item {
     @include flex-column;
-    gap: $spacing-sm;
-    margin-bottom: $spacing-xl;
-    padding-bottom: $spacing-lg;
-    @include border-bottom;
-
-    &:last-child {
-      border-bottom: none;
-    }
+    gap: 0.25rem;
+    margin-bottom: 1.2rem;
+    padding-bottom: $spacing-xs;
 
     .post-content-row {
       display: flex;
@@ -277,6 +264,7 @@ a {
       overflow: hidden;
       border-radius: $border-radius;
       order: 2;
+      margin-top: $spacing-sm;
 
       .post-thumbnail {
         width: 100%;
@@ -296,7 +284,7 @@ a {
 
   .post-title {
     font-size: 1.5rem;
-    margin-bottom: $spacing-xs;
+    margin-bottom: 0;
 
     a {
       color: $text-color;
@@ -310,7 +298,7 @@ a {
   .post-meta {
     color: $muted-color;
     font-size: 0.9rem;
-    margin-bottom: $spacing-xs;
+    margin-bottom: 0.25rem;
 
     a {
       @include link-style;
@@ -499,7 +487,8 @@ a {
 .posts {
   .category-header,
   .posts-header {
-    @include section-header;
+    margin-bottom: $spacing-lg;
+    padding-bottom: $spacing-xs;
 
     .category-title,
     .posts-title {
@@ -544,7 +533,8 @@ a {
 
 .archive {
   .archive-header {
-    @include section-header;
+    margin-bottom: $spacing-lg;
+    padding-bottom: $spacing-xs;
 
     .archive-title {
       font-size: 2.5rem;
@@ -991,8 +981,8 @@ a {
 // =============================================================================
 
 .pagination {
-  margin-top: $spacing-xl;
-  padding-top: $spacing-lg;
+  margin-top: $spacing-lg;
+  padding-top: $spacing-md;
 
   .pagination-wrapper {
     @include flex-center;
@@ -1081,7 +1071,7 @@ a {
 // =============================================================================
 
 .all-posts-link {
-  margin-top: $spacing-xl;
+  margin-top: $spacing-lg;
 
   .all-posts-button {
     display: flex;
@@ -1113,8 +1103,8 @@ a {
 // =============================================================================
 
 .footer {
-  margin-top: $spacing-xxl;
-  padding-top: $spacing-lg;
+  margin-top: $spacing-xl;
+  padding-top: $spacing-md;
   border-top: 1px solid $border-color;
 
   .footer-content {
@@ -1444,9 +1434,8 @@ a {
 // =============================================================================
 
 .post-navigation {
-  margin-top: $spacing-xxl;
-  padding-top: $spacing-lg;
-  @include border-bottom;
+  margin-top: $spacing-xl;
+  padding-top: $spacing-md;
 
   .post-navigation-links {
     display: flex;
