@@ -1,0 +1,36 @@
+# ============================================================
+# AI PROMPTS CONFIGURATION
+# Edit the prompts below to customize AI enhancement behavior
+# Available placeholders: {title}, {type}, {text}, {whatsNew}, {whyMatters}, {kudos}
+# Note: System prompt enforces single paragraph output format
+# ============================================================
+
+whatsNew: |
+  Enhance the original "What's new" description for this announcement:
+
+  Context:
+  - Title: "{title}"
+  - Type: {type}
+  - Why This Matters: {whyMatters}
+
+  Focus on clarity and engagement. Keep the same tone used in the original text.
+  Never use subjective expressions (e.g., "we are excited", "this is awesome", "we are thrilled", etc.)
+  Do not use the "we" form, talk about the topic directly (instead of "We are introducing this", explain what is being introduced).
+  Be descriptive and explain what is being released but skip talking about the impact.
+
+  Original text to enhance: "{text}"
+
+whyMatters: |
+  Enhance the original "Why This Matters" explanation for this announcement:
+
+  Context:
+  - Title: "{title}"
+  - Type: {type}
+  - What's New: {whatsNew}
+
+  Focus on clarity and engagement. Keep the same tone used in the original text.
+  Never use subjective expressions (e.g., "we are excited", "this is awesome", etc.)
+  Do not use the "we" form, talk about the topic directly (instead of "We are achieving this", explain what is being achieved).
+  Explain why this is going to have an impact on the users, why this matters.
+
+  Original text to enhance: "{text}"
