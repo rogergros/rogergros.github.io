@@ -168,13 +168,37 @@
             color: rgba(255, 255, 255, 0.85);
             text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
         }
+        .avatar-wrapper {
+            position: relative;
+            display: inline-block;
+            width: 150px;
+            margin-left: auto;
+            margin-right: auto;
+        }
         .avatar {
             border: 4px solid var(--accent);
             height: 150px;
             width: 150px;
             border-radius: 50%;
             box-shadow: 0 8px 24px rgba(230, 57, 70, 0.25), 0 2px 8px rgba(0, 0, 0, 0.1);
+            display: block;
         }
+        .avatar-badge {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease;
+        }
+        .avatar-badge:hover {
+            transform: scale(1.1);
+        }
+        .avatar-badge img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .avatar-badge-lokalise { bottom: 2px; right: 2px; width: 32px; height: 32px; }
         #hello {
             font-size: 1.6em;
             margin: 12px 0 6px 0;
@@ -225,7 +249,12 @@
     <div class="jumbotron my-auto">
         <div id="main-container-wrapper">
             <div id="main-container">
-                <img alt="Roger Gros" class="avatar rounded-circle mx-auto d-block" src="assets/img/roger_gros.jpeg" width="150" height="150" fetchpriority="high">
+                <div class="avatar-wrapper d-block mx-auto">
+                    <img alt="Roger Gros" class="avatar rounded-circle" src="assets/img/roger_gros.jpeg" width="150" height="150" fetchpriority="high">
+                    <a href="https://lokalise.com" target="_blank" rel="noopener noreferrer" class="avatar-badge avatar-badge-lokalise" data-bs-toggle="tooltip" data-bs-placement="top" title="I work here as Engineering Manager">
+                        <img src="assets/img/lokalise-logo.svg" alt="Lokalise">
+                    </a>
+                </div>
                 <p id="hello">ρ~Hello world!<span class="cursor">_</span></p>
                 <h1>I'm Roger Gros</h1>
                 <h2>Senior Engineering Manager & Engineering Leader</h2>
